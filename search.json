@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this blog"
+    "text": "At RtoProd.com, we bridge the gap between R development and full-scale production. We understand that taking R code from development to production-ready can be challenging - but possible. Our platform is dedicated to simplifying and accelerating this process by sharing proven insights, tools, and techniques to streamline deployment on modern infrastructure.\nOur team is composed of experts with diverse technical backgrounds, bringing together deep expertise in data science, software engineering, and DevOps. This blend of expertise allows us to tackle the unique demands of production environments, from creating robust data pipelines and APIs to deploying Shiny applications and scaling machine learning models.\nThrough our blog posts, tutorials, and resources, we aim to empower teams to harness the full potential of R in production settings. Whether you’re building an end-to-end data pipeline, deploying a machine learning model, or creating an interactive web app, RtoProd.com is here to guide you in making your code work seamlessly at scale.\nJoin us as we explore best practices, cloud-native technologies, and the latest advancements in R deployment to help you confidently transition your R code from prototype to production."
   },
   {
     "objectID": "posts/welcome/index.html",
