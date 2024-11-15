@@ -3,13 +3,20 @@ project:
 
 website:
   title: "RtoProd.com"
+  description: "Bridging the gap between R development and full-scale production."
+  site-url: https://RtoProd.com/
+  image: profile.jpg
+  favicon: profile.jpg
+  google-analytics: "G-X94N1YEBMV"
+  twitter-card: true
+  open-graph: true
   navbar:
     right:
       - about.qmd
       - icon: github
         href: https://github.com/RtoProd/
       - icon: twitter
-        href: https://twitter.com/RtoProdCom
+        href: https://twitter.com/RtoProdCom/
 format:
   html:
     theme: minty
