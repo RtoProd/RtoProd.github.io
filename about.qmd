@@ -6,10 +6,10 @@ about:
   links:
     - icon: twitter
       text: Twitter
-      href: https://twitter.com/RtoProd/
-    # - icon: linkedin
-    #   text: LinkedIn
-    #   href: https://linkedin.com
+      href: https://twitter.com/RtoProdCom/
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/company/RtoProd/
     - icon: github
       text: Github
       href: https://github.com/RtoProd/

@@ -1,0 +1,137 @@
+---
+title: "Create Your Google Cloud Account"
+author: "Juan C. Rodriguez"
+date: "2024-11-13"
+categories: [GCP, Free-Tier]
+description: "Learn how to set up your Google Cloud Platform account to deploy R code to production. Get $300 in free credits with this step-by-step guide."
+keywords: [Google Cloud Platform, R to production, GCP setup, R deployment, cloud free tier]
+image: 26_all_done.png
+---
+
+## Welcome to RtoProd.com!
+
+Welcome to the first blog post on **RtoProd.com**! Our mission is to provide tips, tricks, and insights to help you transition your R code to production-grade infrastructure. 
+
+Before diving into the technical aspects of deploying R applications, the very first thing we need is an account on a production-grade infrastructure platform. In this post, we'll guide you through creating a **Google Cloud Platform (GCP)** account. GCP offers a robust and scalable environment perfect for hosting R applications, pipelines, and APIs. By following this tutorial, you'll gain access to $300 in free credits and set up your account.
+
+---
+
+## Why Choose Google Cloud?
+
+Google Cloud Platform is an excellent choice for deploying R projects due to its scalability, compatibility with R tools, and a wide range of services. While other cloud providers like AWS and Azure are equally viable, we focus on GCP because it's what we're most comfortable with. Other cloud service providers are as recommended as GCP, and most of the services and procedures remain similar.
+
+We recommend creating a new account for each project. First, to keep projects encapsulated in their own account, making it easier to manage and organize resources. Second, because Google offers $300 in credits for every new account, providing a great opportunity to experiment with their services at no cost.
+
+---
+
+## Step-by-Step Guide to Creating a Google Cloud Account
+
+This guide covers everything from signing up to completing the payment setup.
+Don't worry—your payment method won't be charged until your $300 free credits are either spent or expire in 90 days.
+Let's get started!
+
+1. Visit [https://cloud.google.com/](https://cloud.google.com/){.external target="_blank"}.
+
+2. Click the **"Start Free"** button.
+
+![](01_start_free.png){width=200 fig-alt="Click 'Start free'." style="border: 1px solid black;"}
+
+3. Click **"Create account"**, then choose **"For work or my business"** (or another option that suits your needs).
+
+![](02_create_account.png){width=250 fig-alt="Click 'Create account' and then 'For work or my business'." style="border: 1px solid black;"}
+
+4. Click **"Get a Gmail address"**.
+
+![](03_get_gmail_address.png){width=350 fig-alt="Click 'Get a Gmail address'." style="border: 1px solid black;"}
+
+5. Enter your **First and Last names**, and then click on **"Next"**.
+
+![](04_fill_your_name.png){width=350 fig-alt="Fill your first and last names." style="border: 1px solid black;"}
+
+6. Fill in your **birthdate and Gender**, and click on **"Next"**.
+
+![](05_fill_your_basic_info.png){width=350 fig-alt="Fill your birthdate and gender." style="border: 1px solid black;"}
+
+7. Click **"Get a Gmail address instead"**.
+
+![](06_get_gmail_address.png){width=350 fig-alt="Click 'Get a Gmail address instead'." style="border: 1px solid black;"}
+
+8. Fill in your **Username** (we recommend a name related to the new project), and click **"Next"**.
+
+![](07_choose_username.png){width=350 fig-alt="Chose your username." style="border: 1px solid black;"}
+
+9. Fill in your **Password**, and click **"Next"**.
+
+![](08_choose_password.png){width=350 fig-alt="Fill your password." style="border: 1px solid black;"}
+
+10. Fill in your **Phone number**, and click **"Next"**. This step is safe; you won't be charged anything to your phone number, and you can use your number for as many accounts as you need.
+
+![](09_add_phone.png){width=350 fig-alt="Fill your phone number." style="border: 1px solid black;"}
+
+11. Enter the **verification code** you receive via SMS, and click **"Next"**.
+
+![](10_verify_phone.png){width=350 fig-alt="Fill the phone number verification code." style="border: 1px solid black;"}
+
+12. Add a **Recovery email** (we recommend using your most used email), and click **"Next"**.
+
+![](11_add_recovery_email.png){width=350 fig-alt="Fill your recovery email." style="border: 1px solid black;"}
+
+13. Fill in your **Phone number** again, and click **"Next"**.
+
+![](12_add_recovery_phone.png){width=350 fig-alt="Fill your phone number." style="border: 1px solid black;"}
+
+14. If a screen pops up stating that your phone number is already in use for another account, click **"Continue creating a new account"**.
+
+![](13_discard_multi_accounts.png){width=350 fig-alt="Click 'Continue creating a new account'." style="border: 1px solid black;"}
+
+15. Just click **"Skip"**.
+
+![](14_discard_offer.png){width=350 fig-alt="Click 'Skip'." style="border: 1px solid black;"}
+
+16. Click **"Next"**.
+
+![](15_review_account.png){width=350 fig-alt="Click 'Next'." style="border: 1px solid black;"}
+
+17. Thoroughly read the **terms and conditions**, and click **"I agree"** (if you agree).
+
+![](16_read_and_agree_disclaimer.png){width=350 fig-alt="Click 'I agree' if you approve T&C." style="border: 1px solid black;"}
+
+18. Click **"Not Now"**.
+
+![](17_dont_set_business.png){width=350 fig-alt="Click 'Not Now'." style="border: 1px solid black;"}
+
+19. Fill in your **business country**, and click **"Agree & continue"** (if you agree with the terms).
+
+![](18_fill_country.png){width=350 fig-alt="Fill your business country and click 'Agree & continue' if you agree T&C." style="border: 1px solid black;"}
+
+20. Click **"Start free"**.
+
+![](19_add_payment_info.png){width=350 fig-alt="Click 'Start free'." style="border: 1px solid black;"}
+
+21. Fill in your **payments profile**. Here, we use the **"Individual"** profile type.
+
+![](20_payment_profile.png){width=350 fig-alt="Fill your payments profile." style="border: 1px solid black;"}
+
+22. Click **"Start free"**.
+
+![](21_add_payment_info_2.png){width=350 fig-alt="Click 'Start free'." style="border: 1px solid black;"}
+
+23. Fill in your **payment method** details. Here, we've used a **credit card**.
+
+![](22_add_credit_card.png){width=350 fig-alt="Fill your payment method." style="border: 1px solid black;"}
+
+24. Add your **credit card** information. It won't be charged until your free credits expire, at which point you can decide whether to continue paying or disable non-free-tier services.
+
+![](23_add_credit_card_2.png){width=350 fig-alt="Fill your payment method details." style="border: 1px solid black;"}
+
+25. Click **"Start free"**.
+
+![](24_start_free.png){width=350 fig-alt="Click 'Start free'." style="border: 1px solid black;"}
+
+26. Click **"Done"**.
+
+![](25_close_welcome.png){width=350 fig-alt="Click 'Done'." style="border: 1px solid black;"}
+
+27. That's it! Your account is now ready to use, with **free-tier services** enabled, and you've got **$300 in credits** to use within the next 3 months.
+
+![](26_all_done.png){width=600 fig-alt="All done!" style="border: 1px solid black;"}
