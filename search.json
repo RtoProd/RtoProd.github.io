@@ -7,24 +7,38 @@
     "text": "At RtoProd.com, we bridge the gap between R development and full-scale production. We understand that taking R code from development to production-ready can be challenging - but possible. Our platform is dedicated to simplifying and accelerating this process by sharing proven insights, tools, and techniques to streamline deployment on modern infrastructure.\nOur team is composed of experts with diverse technical backgrounds, bringing together deep expertise in data science, software engineering, and DevOps. This blend of expertise allows us to tackle the unique demands of production environments, from creating robust data pipelines and APIs to deploying Shiny applications and scaling machine learning models.\nThrough our blog posts, tutorials, and resources, we aim to empower teams to harness the full potential of R in production settings. Whether you’re building an end-to-end data pipeline, deploying a machine learning model, or creating an interactive web app, RtoProd.com is here to guide you in making your code work seamlessly at scale.\nJoin us as we explore best practices, cloud-native technologies, and the latest advancements in R deployment to help you confidently transition your R code from prototype to production."
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "objectID": "posts/create-your-gcp-account/index.html",
+    "href": "posts/create-your-gcp-account/index.html",
+    "title": "Create Your Google Cloud Account",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "Welcome to the first blog post on RtoProd.com! Our mission is to provide tips, tricks, and insights to help you transition your R code to production-grade infrastructure.\nBefore diving into the technical aspects of deploying R applications, the very first thing we need is an account on a production-grade infrastructure platform. In this post, we’ll guide you through creating a Google Cloud Platform (GCP) account. GCP offers a robust and scalable environment perfect for hosting R applications, pipelines, and APIs. By following this tutorial, you’ll gain access to $300 in free credits and set up your account."
   },
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
+    "objectID": "posts/create-your-gcp-account/index.html#welcome-to-rtoprod.com",
+    "href": "posts/create-your-gcp-account/index.html#welcome-to-rtoprod.com",
+    "title": "Create Your Google Cloud Account",
     "section": "",
-    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+    "text": "Welcome to the first blog post on RtoProd.com! Our mission is to provide tips, tricks, and insights to help you transition your R code to production-grade infrastructure.\nBefore diving into the technical aspects of deploying R applications, the very first thing we need is an account on a production-grade infrastructure platform. In this post, we’ll guide you through creating a Google Cloud Platform (GCP) account. GCP offers a robust and scalable environment perfect for hosting R applications, pipelines, and APIs. By following this tutorial, you’ll gain access to $300 in free credits and set up your account."
+  },
+  {
+    "objectID": "posts/create-your-gcp-account/index.html#why-choose-google-cloud",
+    "href": "posts/create-your-gcp-account/index.html#why-choose-google-cloud",
+    "title": "Create Your Google Cloud Account",
+    "section": "Why Choose Google Cloud?",
+    "text": "Why Choose Google Cloud?\nGoogle Cloud Platform is an excellent choice for deploying R projects due to its scalability, compatibility with R tools, and a wide range of services. While other cloud providers like AWS and Azure are equally viable, we focus on GCP because it’s what we’re most comfortable with. Other cloud service providers are as recommended as GCP, and most of the services and procedures remain similar.\nWe recommend creating a new account for each project. First, to keep projects encapsulated in their own account, making it easier to manage and organize resources. Second, because Google offers $300 in credits for every new account, providing a great opportunity to experiment with their services at no cost."
+  },
+  {
+    "objectID": "posts/create-your-gcp-account/index.html#step-by-step-guide-to-creating-a-google-cloud-account",
+    "href": "posts/create-your-gcp-account/index.html#step-by-step-guide-to-creating-a-google-cloud-account",
+    "title": "Create Your Google Cloud Account",
+    "section": "Step-by-Step Guide to Creating a Google Cloud Account",
+    "text": "Step-by-Step Guide to Creating a Google Cloud Account\nThis guide covers everything from signing up to completing the payment setup. Don’t worry—your payment method won’t be charged until your $300 free credits are either spent or expire in 90 days. Let’s get started!\n\nVisit https://cloud.google.com/.\nClick the “Start Free” button.\n\n\n\nClick “Create account”, then choose “For work or my business” (or another option that suits your needs).\n\n\n\nClick “Get a Gmail address”.\n\n\n\nEnter your First and Last names, and then click on “Next”.\n\n\n\nFill in your birthdate and Gender, and click on “Next”.\n\n\n\nClick “Get a Gmail address instead”.\n\n\n\nFill in your Username (we recommend a name related to the new project), and click “Next”.\n\n\n\nFill in your Password, and click “Next”.\n\n\n\nFill in your Phone number, and click “Next”. This step is safe; you won’t be charged anything to your phone number, and you can use your number for as many accounts as you need.\n\n\n\nEnter the verification code you receive via SMS, and click “Next”.\n\n\n\nAdd a Recovery email (we recommend using your most used email), and click “Next”.\n\n\n\nFill in your Phone number again, and click “Next”.\n\n\n\nIf a screen pops up stating that your phone number is already in use for another account, click “Continue creating a new account”.\n\n\n\nJust click “Skip”.\n\n\n\nClick “Next”.\n\n\n\nThoroughly read the terms and conditions, and click “I agree” (if you agree).\n\n\n\nClick “Not Now”.\n\n\n\nFill in your business country, and click “Agree & continue” (if you agree with the terms).\n\n\n\nClick “Start free”.\n\n\n\nFill in your payments profile. Here, we use the “Individual” profile type.\n\n\n\nClick “Start free”.\n\n\n\nFill in your payment method details. Here, we’ve used a credit card.\n\n\n\nAdd your credit card information. It won’t be charged until your free credits expire, at which point you can decide whether to continue paying or disable non-free-tier services.\n\n\n\nClick “Start free”.\n\n\n\nClick “Done”.\n\n\n\nThat’s it! Your account is now ready to use, with free-tier services enabled, and you’ve got $300 in credits to use within the next 3 months."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Blog",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nNov 12, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nNov 9, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Create Your Google Cloud Account\n\n\n\n\n\n\nGCP\n\n\nFree-Tier\n\n\n\nLearn how to set up your Google Cloud Platform account to deploy R code to production. Get $300 in free credits with this step-by-step guide.\n\n\n\n\n\nNov 13, 2024\n\n\nJuan C. Rodriguez\n\n\n\n\n\n\nNo matching items"
   }
 ]
