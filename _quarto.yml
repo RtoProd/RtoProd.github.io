@@ -7,7 +7,8 @@ website:
   site-url: https://RtoProd.com/
   image: profile.jpg
   favicon: profile.jpg
-  google-analytics: "G-X94N1YEBMV"
+  google-analytics:
+    tracking-id: "G-X94N1YEBMV"
   twitter-card: true
   open-graph: true
   navbar:
