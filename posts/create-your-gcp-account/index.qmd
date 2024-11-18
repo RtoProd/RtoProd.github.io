@@ -137,3 +137,25 @@ Let's get started!
 27. That's it! Your account is now ready to use, with **[free-tier services](https://cloud.google.com/free/docs/free-cloud-features#free-tier-usage-limits){.external target="_blank"}** enabled, and you've got **[$300 in credits](https://cloud.google.com/free/docs/free-cloud-features#free-trial){.external target="_blank"}** to use within the next 3 months.
 
 ![](26_all_done.png){width=600 fig-alt="All done!" style="border: 1px solid black;"}
+
+---
+
+## Creating Your First Project (Optional)
+
+While it's perfectly fine to start with the default "My First Project" assigned by Google Cloud, creating a dedicated project for each of your R deployments helps you organize resources more effectively. It's a simple process and a great habit to adopt.
+
+1. Click on **"My First Project"**.
+
+![](27_my_first_project.png){width=250 fig-alt="Click 'My First Project'." style="border: 1px solid black;"}
+
+2. Click **"NEW PROJECT"**.
+
+![](28_new_project.png){width=200 fig-alt="Click 'NEW PROJECT'." style="border: 1px solid black;"}
+
+3. Enter the new **"Project name"**, and then click **"CREATE"**.
+
+![](29_new_project_name.png){width=400 fig-alt="Fill the project name and click 'CREATE'." style="border: 1px solid black;"}
+
+4. Wait a few moments for the new project to be created. Once the green checkmark appears, click **"SELECT PROJECT"** to start using your new project.
+
+![](30_select_project.png){width=400 fig-alt="Click 'SELECT PROJECT' to use your new project." style="border: 1px solid black;"}
