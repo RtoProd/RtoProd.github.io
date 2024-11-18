@@ -7,11 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Juan C. Rodriguez">
-<meta name="dcterms.date" content="2024-11-13">
-<meta name="keywords" content="Google Cloud Platform, R to production, GCP setup, R deployment, cloud free tier">
-<meta name="description" content="Learn how to set up your Google Cloud Platform account to deploy R code to production. Get $300 in free credits with this step-by-step guide.">
+<meta name="dcterms.date" content="2024-11-18">
 
-<title>Create Your Google Cloud Account – RtoProd.com</title>
+<title>Deploy Your Shiny App – RtoProd.com</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -83,17 +81,13 @@ gtag('config', 'G-X94N1YEBMV', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Create Your Google Cloud Account – RtoProd.com">
-<meta property="og:description" content="Learn how to set up your Google Cloud Platform account to deploy R code to production. Get $300 in free credits with this step-by-step guide.">
-<meta property="og:image" content="https://RtoProd.com/posts/create-your-gcp-account/26_all_done.png">
+<meta property="og:title" content="Deploy Your Shiny App – RtoProd.com">
+<meta property="og:description" content="Bridging the gap between R development and full-scale production.">
+<meta property="og:image" content="https://RtoProd.com/posts/deploy-your-shiny-app/profile.jpg">
 <meta property="og:site_name" content="RtoProd.com">
-<meta property="og:image:height" content="500">
-<meta property="og:image:width" content="1150">
-<meta name="twitter:title" content="Create Your Google Cloud Account – RtoProd.com">
-<meta name="twitter:description" content="Learn how to set up your Google Cloud Platform account to deploy R code to production. Get $300 in free credits with this step-by-step guide.">
-<meta name="twitter:image" content="https://RtoProd.com/posts/create-your-gcp-account/26_all_done.png">
-<meta name="twitter:image-height" content="500">
-<meta name="twitter:image-width" content="1150">
+<meta name="twitter:title" content="Deploy Your Shiny App – RtoProd.com">
+<meta name="twitter:description" content="Bridging the gap between R development and full-scale production.">
+<meta name="twitter:image" content="https://RtoProd.com/posts/deploy-your-shiny-app/profile.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -139,13 +133,8 @@ gtag('config', 'G-X94N1YEBMV', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Create Your Google Cloud Account</h1>
-                  <div>
-        <div class="description">
-          Learn how to set up your Google Cloud Platform account to deploy R code to production. Get $300 in free credits with this step-by-step guide.
-        </div>
-      </div>
-                          <div class="quarto-categories">
+      <h1 class="title">Deploy Your Shiny App</h1>
+                                <div class="quarto-categories">
                 <div class="quarto-category">GCP</div>
                 <div class="quarto-category">Free-Tier</div>
               </div>
@@ -165,20 +154,13 @@ gtag('config', 'G-X94N1YEBMV', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 13, 2024</p>
+        <p class="date">November 18, 2024</p>
       </div>
     </div>
     
       
     </div>
     
-
-  <div>
-    <div class="keywords">
-      <div class="block-title">Keywords</div>
-      <p>Google Cloud Platform, R to production, GCP setup, R deployment, cloud free tier</p>
-    </div>
-  </div>
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
@@ -191,150 +173,15 @@ gtag('config', 'G-X94N1YEBMV', { 'anonymize_ip': true});
 
 
 
-<section id="welcome-to-rtoprod.com" class="level2">
-<h2 class="anchored" data-anchor-id="welcome-to-rtoprod.com">Welcome to RtoProd.com!</h2>
-<p>Welcome to the first blog post on <strong>RtoProd.com</strong>! Our mission is to provide tips, tricks, and insights to help you transition your R code to production-grade infrastructure.</p>
-<p>Before diving into the technical aspects of deploying R applications, the very first thing we need is an account on a production-grade infrastructure platform. In this post, we’ll guide you through creating a <strong>Google Cloud Platform (GCP)</strong> account. GCP offers a robust and scalable environment perfect for hosting R applications, pipelines, and APIs. By following this tutorial, you’ll set up your account and gain access to <a href="https://cloud.google.com/free/docs/free-cloud-features#free-trial" class="external" target="_blank">$300 in free credits</a>.</p>
-<p>In addition to the free credits, GCP offers a range of free-tier services that you can use indefinitely under specified limits. You can find a complete list of <a href="https://cloud.google.com/free/docs/free-cloud-features#free-tier-usage-limits" class="external" target="_blank">free-tier services here</a>.</p>
-<hr>
-</section>
-<section id="why-choose-google-cloud" class="level2">
-<h2 class="anchored" data-anchor-id="why-choose-google-cloud">Why Choose Google Cloud?</h2>
-<p>Google Cloud Platform is an excellent choice for deploying R projects due to its scalability, compatibility with R tools, and a wide range of services. While other cloud providers like AWS and Azure are equally viable, we focus on GCP because it’s what we’re most comfortable with. Other cloud service providers are as recommended as GCP, and most of the services and procedures remain similar.</p>
-<p>We recommend creating a new account for each project. First, to keep projects encapsulated in their own account, making it easier to manage and organize resources. Second, because Google offers $300 in credits for every new account, providing a great opportunity to experiment with their services at no cost.</p>
-<hr>
-</section>
-<section id="step-by-step-guide-to-creating-a-google-cloud-account" class="level2">
-<h2 class="anchored" data-anchor-id="step-by-step-guide-to-creating-a-google-cloud-account">Step-by-Step Guide to Creating a Google Cloud Account</h2>
-<p>This guide covers everything from signing up to completing the payment setup. Don’t worry—your payment method won’t be charged until your $300 free credits are either spent or expire in 90 days. Let’s get started!</p>
-<ol type="1">
-<li><p>Visit <a href="https://cloud.google.com/" class="external" target="_blank">https://cloud.google.com/</a>.</p></li>
-<li><p>Click the <strong>“Start Free”</strong> button.</p></li>
-</ol>
-<p><img src="01_start_free.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Start free'." width="200"></p>
-<ol start="3" type="1">
-<li>Click <strong>“Create account”</strong>, then choose <strong>“For work or my business”</strong> (or another option that suits your needs).</li>
-</ol>
-<p><img src="02_create_account.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Create account' and then 'For work or my business'." width="250"></p>
-<ol start="4" type="1">
-<li>Click <strong>“Get a Gmail address”</strong>.</li>
-</ol>
-<p><img src="03_get_gmail_address.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Get a Gmail address'." width="350"></p>
-<ol start="5" type="1">
-<li>Enter your <strong>First and Last names</strong>, and then click on <strong>“Next”</strong>.</li>
-</ol>
-<p><img src="04_fill_your_name.png" class="img-fluid" style="border: 1px solid black;" alt="Fill your first and last names." width="350"></p>
-<ol start="6" type="1">
-<li>Fill in your <strong>birthdate and Gender</strong>, and click on <strong>“Next”</strong>.</li>
-</ol>
-<p><img src="05_fill_your_basic_info.png" class="img-fluid" style="border: 1px solid black;" alt="Fill your birthdate and gender." width="350"></p>
-<ol start="7" type="1">
-<li>Click <strong>“Get a Gmail address instead”</strong>.</li>
-</ol>
-<p><img src="06_get_gmail_address.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Get a Gmail address instead'." width="350"></p>
-<ol start="8" type="1">
-<li>Fill in your <strong>Username</strong> (we recommend a name related to the new project), and click <strong>“Next”</strong>.</li>
-</ol>
-<p><img src="07_choose_username.png" class="img-fluid" style="border: 1px solid black;" alt="Chose your username." width="350"></p>
-<ol start="9" type="1">
-<li>Fill in your <strong>Password</strong>, and click <strong>“Next”</strong>.</li>
-</ol>
-<p><img src="08_choose_password.png" class="img-fluid" style="border: 1px solid black;" alt="Fill your password." width="350"></p>
-<ol start="10" type="1">
-<li>Fill in your <strong>Phone number</strong>, and click <strong>“Next”</strong>. This step is safe; you won’t be charged anything to your phone number, and you can use your number for as many accounts as you need.</li>
-</ol>
-<p><img src="09_add_phone.png" class="img-fluid" style="border: 1px solid black;" alt="Fill your phone number." width="350"></p>
-<ol start="11" type="1">
-<li>Enter the <strong>verification code</strong> you receive via SMS, and click <strong>“Next”</strong>.</li>
-</ol>
-<p><img src="10_verify_phone.png" class="img-fluid" style="border: 1px solid black;" alt="Fill the phone number verification code." width="350"></p>
-<ol start="12" type="1">
-<li>Add a <strong>Recovery email</strong> (we recommend using your most used email), and click <strong>“Next”</strong>.</li>
-</ol>
-<p><img src="11_add_recovery_email.png" class="img-fluid" style="border: 1px solid black;" alt="Fill your recovery email." width="350"></p>
-<ol start="13" type="1">
-<li>Fill in your <strong>Phone number</strong> again, and click <strong>“Next”</strong>.</li>
-</ol>
-<p><img src="12_add_recovery_phone.png" class="img-fluid" style="border: 1px solid black;" alt="Fill your phone number." width="350"></p>
-<ol start="14" type="1">
-<li>If a screen pops up stating that your phone number is already in use for another account, click <strong>“Continue creating a new account”</strong>.</li>
-</ol>
-<p><img src="13_discard_multi_accounts.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Continue creating a new account'." width="350"></p>
-<ol start="15" type="1">
-<li>Just click <strong>“Skip”</strong>.</li>
-</ol>
-<p><img src="14_discard_offer.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Skip'." width="350"></p>
-<ol start="16" type="1">
-<li>Click <strong>“Next”</strong>.</li>
-</ol>
-<p><img src="15_review_account.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Next'." width="350"></p>
-<ol start="17" type="1">
-<li>Thoroughly read the <strong>terms and conditions</strong>, and click <strong>“I agree”</strong> (if you agree).</li>
-</ol>
-<p><img src="16_read_and_agree_disclaimer.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'I agree' if you approve T&amp;C." width="350"></p>
-<ol start="18" type="1">
-<li>Click <strong>“Not Now”</strong>.</li>
-</ol>
-<p><img src="17_dont_set_business.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Not Now'." width="350"></p>
-<ol start="19" type="1">
-<li>Fill in your <strong>business country</strong>, and click <strong>“Agree &amp; continue”</strong> (if you agree with the terms).</li>
-</ol>
-<p><img src="18_fill_country.png" class="img-fluid" style="border: 1px solid black;" alt="Fill your business country and click 'Agree &amp; continue' if you agree T&amp;C." width="350"></p>
-<ol start="20" type="1">
-<li>Click <strong>“Start free”</strong>.</li>
-</ol>
-<p><img src="19_add_payment_info.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Start free'." width="350"></p>
-<ol start="21" type="1">
-<li>Fill in your <strong>payments profile</strong>. Here, we use the <strong>“Individual”</strong> profile type.</li>
-</ol>
-<p><img src="20_payment_profile.png" class="img-fluid" style="border: 1px solid black;" alt="Fill your payments profile." width="350"></p>
-<ol start="22" type="1">
-<li>Click <strong>“Start free”</strong>.</li>
-</ol>
-<p><img src="21_add_payment_info_2.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Start free'." width="350"></p>
-<ol start="23" type="1">
-<li>Fill in your <strong>payment method</strong> details. Here, we’ve used a <strong>credit card</strong>.</li>
-</ol>
-<p><img src="22_add_credit_card.png" class="img-fluid" style="border: 1px solid black;" alt="Fill your payment method." width="350"></p>
-<ol start="24" type="1">
-<li>Add your <strong>credit card</strong> information. It won’t be charged until your free credits expire, at which point you can decide whether to continue paying or disable non-free-tier services.</li>
-</ol>
-<p><img src="23_add_credit_card_2.png" class="img-fluid" style="border: 1px solid black;" alt="Fill your payment method details." width="350"></p>
-<ol start="25" type="1">
-<li>Click <strong>“Start free”</strong>.</li>
-</ol>
-<p><img src="24_start_free.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Start free'." width="350"></p>
-<ol start="26" type="1">
-<li>Click <strong>“Done”</strong>.</li>
-</ol>
-<p><img src="25_close_welcome.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Done'." width="350"></p>
-<ol start="27" type="1">
-<li>That’s it! Your account is now ready to use, with <strong><a href="https://cloud.google.com/free/docs/free-cloud-features#free-tier-usage-limits" class="external" target="_blank">free-tier services</a></strong> enabled, and you’ve got <strong><a href="https://cloud.google.com/free/docs/free-cloud-features#free-trial" class="external" target="_blank">$300 in credits</a></strong> to use within the next 3 months.</li>
-</ol>
-<p><img src="26_all_done.png" class="img-fluid" style="border: 1px solid black;" alt="All done!" width="600"></p>
-<hr>
-</section>
-<section id="creating-your-first-project-optional" class="level2">
-<h2 class="anchored" data-anchor-id="creating-your-first-project-optional">Creating Your First Project (Optional)</h2>
-<p>While it’s perfectly fine to start with the default “My First Project” assigned by Google Cloud, creating a dedicated project for each of your R deployments helps you organize resources more effectively. It’s a simple process and a great habit to adopt.</p>
-<ol type="1">
-<li>Click on <strong>“My First Project”</strong>.</li>
-</ol>
-<p><img src="27_my_first_project.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'My First Project'." width="250"></p>
-<ol start="2" type="1">
-<li>Click <strong>“NEW PROJECT”</strong>.</li>
-</ol>
-<p><img src="28_new_project.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'NEW PROJECT'." width="200"></p>
-<ol start="3" type="1">
-<li>Enter the new <strong>“Project name”</strong>, and then click <strong>“CREATE”</strong>.</li>
-</ol>
-<p><img src="29_new_project_name.png" class="img-fluid" style="border: 1px solid black;" alt="Fill the project name and click 'CREATE'." width="400"></p>
-<ol start="4" type="1">
-<li>Wait a few moments for the new project to be created. Once the green checkmark appears, click <strong>“SELECT PROJECT”</strong> to start using your new project.</li>
-</ol>
-<p><img src="30_select_project.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'SELECT PROJECT' to use your new project." width="400"></p>
+<section id="deploy-your-shiny-app" class="level2">
+<h2 class="anchored" data-anchor-id="deploy-your-shiny-app">Deploy Your Shiny App</h2>
+<p>In this blog post we are going to walk through how to deploy a Shiny App into production. For this tutorial, we will use a basic Shiny App which doesn’t have any database connection (as we are going to focus on database configurations in a following post), and</p>
+<section id="prerequisites" class="level3">
+<h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
+<p>For this tutorial, we will need to have: * <a href="https://rtoprod.com/posts/create-your-gcp-account/">An active GCP account</a>. * <a href="https://cloud.google.com/sdk/docs/install">Installed and set the <code>gcloud</code> command line interface</a>. * <a href="https://www.appsilon.com/post/r-shiny-docker-getting-started">A dockerized Shiny App</a>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
