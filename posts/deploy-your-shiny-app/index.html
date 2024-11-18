@@ -8,8 +8,10 @@
 
 <meta name="author" content="Juan C. Rodriguez">
 <meta name="dcterms.date" content="2024-11-18">
+<meta name="keywords" content="Shiny, GCP, Cloud Run, Docker, Free Tier">
+<meta name="description" content="A step-by-step guide to deploying a Shiny app on Google Cloud Platform using Artifact Registry and Cloud Run.">
 
-<title>Deploy Your Shiny App – RtoProd.com</title>
+<title>Deploy Your Shiny App on Google Cloud Platform – RtoProd.com</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +23,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -81,13 +117,17 @@ gtag('config', 'G-X94N1YEBMV', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Deploy Your Shiny App – RtoProd.com">
-<meta property="og:description" content="Bridging the gap between R development and full-scale production.">
-<meta property="og:image" content="https://RtoProd.com/posts/deploy-your-shiny-app/profile.jpg">
+<meta property="og:title" content="Deploy Your Shiny App on Google Cloud Platform – RtoProd.com">
+<meta property="og:description" content="A step-by-step guide to deploying a Shiny app on Google Cloud Platform using Artifact Registry and Cloud Run.">
+<meta property="og:image" content="https://RtoProd.com/posts/deploy-your-shiny-app/thumbnail.png">
 <meta property="og:site_name" content="RtoProd.com">
-<meta name="twitter:title" content="Deploy Your Shiny App – RtoProd.com">
-<meta name="twitter:description" content="Bridging the gap between R development and full-scale production.">
-<meta name="twitter:image" content="https://RtoProd.com/posts/deploy-your-shiny-app/profile.jpg">
+<meta property="og:image:height" content="1036">
+<meta property="og:image:width" content="1916">
+<meta name="twitter:title" content="Deploy Your Shiny App on Google Cloud Platform – RtoProd.com">
+<meta name="twitter:description" content="A step-by-step guide to deploying a Shiny app on Google Cloud Platform using Artifact Registry and Cloud Run.">
+<meta name="twitter:image" content="https://RtoProd.com/posts/deploy-your-shiny-app/thumbnail.png">
+<meta name="twitter:image-height" content="1036">
+<meta name="twitter:image-width" content="1916">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -133,8 +173,14 @@ gtag('config', 'G-X94N1YEBMV', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Deploy Your Shiny App</h1>
-                                <div class="quarto-categories">
+      <h1 class="title">Deploy Your Shiny App on Google Cloud Platform</h1>
+                  <div>
+        <div class="description">
+          A step-by-step guide to deploying a Shiny app on Google Cloud Platform using Artifact Registry and Cloud Run.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Shiny</div>
                 <div class="quarto-category">GCP</div>
                 <div class="quarto-category">Free-Tier</div>
               </div>
@@ -161,6 +207,13 @@ gtag('config', 'G-X94N1YEBMV', { 'anonymize_ip': true});
       
     </div>
     
+
+  <div>
+    <div class="keywords">
+      <div class="block-title">Keywords</div>
+      <p>Shiny, GCP, Cloud Run, Docker, Free Tier</p>
+    </div>
+  </div>
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
@@ -173,15 +226,73 @@ gtag('config', 'G-X94N1YEBMV', { 'anonymize_ip': true});
 
 
 
-<section id="deploy-your-shiny-app" class="level2">
-<h2 class="anchored" data-anchor-id="deploy-your-shiny-app">Deploy Your Shiny App</h2>
-<p>In this blog post we are going to walk through how to deploy a Shiny App into production. For this tutorial, we will use a basic Shiny App which doesn’t have any database connection (as we are going to focus on database configurations in a following post), and</p>
+<section id="deploy-your-shiny-app-on-google-cloud-platform" class="level2">
+<h2 class="anchored" data-anchor-id="deploy-your-shiny-app-on-google-cloud-platform">Deploy Your Shiny App on Google Cloud Platform</h2>
+<p>In this blog post, we’ll walk through the process of deploying a Shiny app to production using Google Cloud Platform (GCP).</p>
+<p>In this post, we’ll walk you through the process of deploying a Shiny app to production on Google Cloud Platform (GCP). We’ll use a simple dockerized Shiny app called <code>everysinglecountry</code>, which interacts with public APIs. This app doesn’t require a <em>backend</em>, <em>database</em>, or <em>authentication</em>, as we’ll cover those topics in future tutorials. If you’re looking to expand your app with these features, stay tuned!</p>
 <section id="prerequisites" class="level3">
 <h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
-<p>For this tutorial, we will need to have: * <a href="https://rtoprod.com/posts/create-your-gcp-account/">An active GCP account</a>. * <a href="https://cloud.google.com/sdk/docs/install">Installed and set the <code>gcloud</code> command line interface</a>. * <a href="https://www.appsilon.com/post/r-shiny-docker-getting-started">A dockerized Shiny App</a>.</p>
-
-
+<p>Before we get started, ensure you have the following:</p>
+<ul>
+<li><a href="https://rtoprod.com/posts/create-your-gcp-account/" class="external" target="_blank">An active GCP account</a>.</li>
+<li><a href="https://cloud.google.com/sdk/docs/install" class="external" target="_blank">The <code>gcloud</code> command-line interface installed and configured</a>.</li>
+<li><a href="https://www.appsilon.com/post/r-shiny-docker-getting-started" class="external" target="_blank">A dockerized Shiny app</a>.</li>
+</ul>
 </section>
+<section id="steps-overview" class="level3">
+<h3 class="anchored" data-anchor-id="steps-overview">Steps Overview</h3>
+<ol type="1">
+<li>Enable the “Artifact Registry API” and “Cloud Run” services.</li>
+<li>Push your Docker image to Google Artifact Registry.</li>
+<li>Deploy the image to Cloud Run for production.</li>
+</ol>
+</section>
+</section>
+<section id="lets-get-started" class="level2">
+<h2 class="anchored" data-anchor-id="lets-get-started">Let’s Get Started</h2>
+<p>Open a terminal and navigate to the directory where your Shiny app is located:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/Projects/everysinglecountry/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ensure that your Docker image is working as expected by running it locally. Visit http://localhost:8080 in your browser to test the app.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker run <span class="at">-p</span> 8080:8080 everysinglecountry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Log in to your GCP account using the following command. This will open a browser window where you must select the appropriate account for your project:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gcloud auth login</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>Select your GCP account.</li>
+</ol>
+<p><img src="01_select_account.png" class="img-fluid" style="border: 1px solid black;" alt="Select your GCP account." width="400"></p>
+<ol start="2" type="1">
+<li>Click <strong>“Continue”</strong>.</li>
+</ol>
+<p><img src="02_click_continue.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Continue'." width="550"></p>
+<ol start="3" type="1">
+<li>Click <strong>“Allow”</strong> to grant the necessary permissions.</li>
+</ol>
+<p><img src="03_allow_permitions.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Allow'." width="550"></p>
+<p>Initialize the GCP account. Select the appropriate account and project (e.g., <code>everysinglecountryproject@gmail.com</code> and <code>every-single-country</code> respectively).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gcloud init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Enable the “Artifact Registry” service so you can push your Docker image:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gcloud services enable artifactregistry.googleapis.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Authenticate Docker to work with Google Artifact Registry:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gcloud auth configure-docker</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Tag your Docker image and push it to Artifact Registry:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker tag everysinglecountry gcr.io/every-single-country/everysinglecountry</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker push gcr.io/every-single-country/everysinglecountry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Enable the “Cloud Run” service to allow deployment of your Docker image:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gcloud services enable run.googleapis.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, deploy the Docker image to Cloud Run. The <code>--platform managed</code> flag specifies that we’re using the fully managed version of Cloud Run. The <code>--region us-central1</code> flag sets the region (I chose us-central1 because it works with Cloud Run Domain Mappings), and the <code>--allow-unauthenticated</code> flag makes the app accessible without authentication.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gcloud run deploy everysinglecountry <span class="dt">\</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--image</span> gcr.io/every-single-country/everysinglecountry:latest <span class="dt">\</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--platform</span> managed <span class="dt">\</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--region</span> us-central1 <span class="dt">\</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--allow-unauthenticated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once the deployment is complete, Cloud Run will provide a “Service URL”. Open the URL in your browser to access your Shiny app, which is now publicly available.</p>
+<p><img src="04_deployed.png" class="img-fluid" style="border: 1px solid black;" alt="Deployed Shiny app on Cloud Run." width="550"></p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Congratulations! You’ve successfully deployed your Shiny app on Google Cloud Platform using Cloud Run. In the next post, we’ll dive into deploying Shiny apps with backend functions via Plumber RESTful APIs and discuss integrating databases for dynamic app functionality.</p>
+
+
 </section>
 
 </main> <!-- /main -->
