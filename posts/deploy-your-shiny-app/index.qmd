@@ -1,0 +1,112 @@
+---
+title: "Deploy Your Shiny App on Google Cloud Platform"
+author: "Juan C. Rodriguez"
+date: "2024-11-18"
+categories: [Shiny, GCP, Free-Tier]
+description: "A step-by-step guide to deploying a Shiny app on Google Cloud Platform using Artifact Registry and Cloud Run."
+keywords: [Shiny, GCP, Cloud Run, Docker, Free Tier]
+image: thumbnail.png
+---
+
+## Deploy Your Shiny App on Google Cloud Platform
+
+In this blog post, we'll walk through the process of deploying a Shiny app to production using Google Cloud Platform (GCP).
+
+In this post, we'll walk you through the process of deploying a Shiny app to production on Google Cloud Platform (GCP). We'll use a simple dockerized Shiny app called `everysinglecountry`, which interacts with public APIs. This app doesn't require a _backend_, _database_, or _authentication_, as we'll cover those topics in future tutorials. If you're looking to expand your app with these features, stay tuned!
+
+### Prerequisites
+
+Before we get started, ensure you have the following:
+
+* [An active GCP account](https://rtoprod.com/posts/create-your-gcp-account/){.external target="_blank"}.
+* [The `gcloud` command-line interface installed and configured](https://cloud.google.com/sdk/docs/install){.external target="_blank"}.
+* [A dockerized Shiny app](https://www.appsilon.com/post/r-shiny-docker-getting-started){.external target="_blank"}.
+
+### Steps Overview
+
+1. Enable the "Artifact Registry API" and "Cloud Run" services.
+2. Push your Docker image to Google Artifact Registry.
+3. Deploy the image to Cloud Run for production.
+
+## Let's Get Started
+
+Open a terminal and navigate to the directory where your Shiny app is located:
+
+```bash
+$ cd ~/Projects/everysinglecountry/
+```
+
+Ensure that your Docker image is working as expected by running it locally.
+Visit http://localhost:8080 in your browser to test the app.
+
+```bash
+$ docker run -p 8080:8080 everysinglecountry
+```
+
+Log in to your GCP account using the following command. This will open a browser window where you must select the appropriate account for your project:
+
+```bash
+$ gcloud auth login
+```
+
+1. Select your GCP account.
+
+![](01_select_account.png){width="400" fig-alt="Select your GCP account." style="border: 1px solid black;"}
+
+2. Click **"Continue"**.
+
+![](02_click_continue.png){width="550" fig-alt="Click 'Continue'." style="border: 1px solid black;"}
+
+3. Click **"Allow"** to grant the necessary permissions.
+
+![](03_allow_permitions.png){width="550" fig-alt="Click 'Allow'." style="border: 1px solid black;"}
+
+Initialize the GCP account. Select the appropriate account and project (e.g., `everysinglecountryproject@gmail.com` and `every-single-country` respectively).
+
+```bash
+$ gcloud init
+```
+
+Enable the "Artifact Registry" service so you can push your Docker image:
+
+```bash
+$ gcloud services enable artifactregistry.googleapis.com
+```
+
+Authenticate Docker to work with Google Artifact Registry:
+
+```bash
+$ gcloud auth configure-docker
+```
+
+Tag your Docker image and push it to Artifact Registry:
+
+```bash
+$ docker tag everysinglecountry gcr.io/every-single-country/everysinglecountry
+$ docker push gcr.io/every-single-country/everysinglecountry
+```
+
+Enable the "Cloud Run" service to allow deployment of your Docker image:
+
+```bash
+$ gcloud services enable run.googleapis.com
+```
+
+
+Now, deploy the Docker image to Cloud Run. The `--platform managed` flag specifies that we're using the fully managed version of Cloud Run. The `--region us-central1` flag sets the region (I chose us-central1 because it works with Cloud Run Domain Mappings), and the `--allow-unauthenticated` flag makes the app accessible without authentication.
+
+```bash
+$ gcloud run deploy everysinglecountry \
+  --image gcr.io/every-single-country/everysinglecountry:latest \
+  --platform managed \
+  --region us-central1 \
+  --allow-unauthenticated
+```
+
+Once the deployment is complete, Cloud Run will provide a "Service URL". Open the URL in your browser to access your Shiny app, which is now publicly available.
+
+![](04_deployed.png){width="550" fig-alt="Deployed Shiny app on Cloud Run." style="border: 1px solid black;"}
+
+## Conclusion
+
+Congratulations! You've successfully deployed your Shiny app on Google Cloud Platform using Cloud Run. In the next post, we'll dive into deploying Shiny apps with backend functions via Plumber RESTful APIs and discuss integrating databases for dynamic app functionality.
