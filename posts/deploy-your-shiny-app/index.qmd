@@ -10,9 +10,11 @@ image: thumbnail.png
 
 ## Deploy Your Shiny App on Google Cloud Platform
 
-In this blog post, we'll walk through the process of deploying a Shiny app to production using Google Cloud Platform (GCP).
+In this blog post, we'll guide you through deploying a Shiny app to production using Google Cloud Platform (GCP), leveraging services that are part of [GCP's free tier](https://cloud.google.com/free/docs/free-cloud-features#free-tier-usage-limits){.external target="_blank"}. Specifically, we'll use Cloud Run and Artifact Registry, both of which offer generous free-tier allocations, allowing you to deploy and run your app at no cost, depending on your usage.
 
-In this post, we'll walk you through the process of deploying a Shiny app to production on Google Cloud Platform (GCP). We'll use a simple dockerized Shiny app called `everysinglecountry`, which interacts with public APIs. This app doesn't require a _backend_, _database_, or _authentication_, as we'll cover those topics in future tutorials. If you're looking to expand your app with these features, stay tuned!
+For this tutorial, we'll use a simple dockerized Shiny app called `everysinglecountry`, which interacts with public APIs. This app doesn't require a _backend_, _database_, or _authentication_, as we'll cover these topics in future tutorials. If you're interested in expanding your app with these features, stay tuned!
+
+By the end of this tutorial, you'll have your Shiny app running on GCP's scalable infrastructure—completely within the free-tier limits.
 
 ### Prerequisites
 
