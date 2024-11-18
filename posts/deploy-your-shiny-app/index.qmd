@@ -109,6 +109,8 @@ Once the deployment is complete, Cloud Run will provide a "Service URL". Open th
 
 ![](04_deployed.png){width="550" fig-alt="Deployed Shiny app on Cloud Run." style="border: 1px solid black;"}
 
+![](thumbnail.png){fig-alt="Deployed Shiny app on Cloud Run." style="border: 1px solid black;"}
+
 ## Conclusion
 
 Congratulations! You've successfully deployed your Shiny app on Google Cloud Platform using Cloud Run. In the next post, we'll dive into deploying Shiny apps with backend functions via Plumber RESTful APIs and discuss integrating databases for dynamic app functionality.
