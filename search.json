@@ -11,14 +11,14 @@
     "href": "posts/create-your-gcp-account/index.html",
     "title": "Create Your Google Cloud Account",
     "section": "",
-    "text": "Welcome to the first blog post on RtoProd.com! Our mission is to provide tips, tricks, and insights to help you transition your R code to production-grade infrastructure.\nBefore diving into the technical aspects of deploying R applications, the very first thing we need is an account on a production-grade infrastructure platform. In this post, we’ll guide you through creating a Google Cloud Platform (GCP) account. GCP offers a robust and scalable environment perfect for hosting R applications, pipelines, and APIs. By following this tutorial, you’ll gain access to $300 in free credits and set up your account."
+    "text": "Welcome to the first blog post on RtoProd.com! Our mission is to provide tips, tricks, and insights to help you transition your R code to production-grade infrastructure.\nBefore diving into the technical aspects of deploying R applications, the very first thing we need is an account on a production-grade infrastructure platform. In this post, we’ll guide you through creating a Google Cloud Platform (GCP) account. GCP offers a robust and scalable environment perfect for hosting R applications, pipelines, and APIs. By following this tutorial, you’ll set up your account and gain access to $300 in free credits.\nIn addition to the free credits, GCP offers a range of free-tier services that you can use indefinitely under specified limits. You can find a complete list of free-tier services here."
   },
   {
     "objectID": "posts/create-your-gcp-account/index.html#welcome-to-rtoprod.com",
     "href": "posts/create-your-gcp-account/index.html#welcome-to-rtoprod.com",
     "title": "Create Your Google Cloud Account",
     "section": "",
-    "text": "Welcome to the first blog post on RtoProd.com! Our mission is to provide tips, tricks, and insights to help you transition your R code to production-grade infrastructure.\nBefore diving into the technical aspects of deploying R applications, the very first thing we need is an account on a production-grade infrastructure platform. In this post, we’ll guide you through creating a Google Cloud Platform (GCP) account. GCP offers a robust and scalable environment perfect for hosting R applications, pipelines, and APIs. By following this tutorial, you’ll gain access to $300 in free credits and set up your account."
+    "text": "Welcome to the first blog post on RtoProd.com! Our mission is to provide tips, tricks, and insights to help you transition your R code to production-grade infrastructure.\nBefore diving into the technical aspects of deploying R applications, the very first thing we need is an account on a production-grade infrastructure platform. In this post, we’ll guide you through creating a Google Cloud Platform (GCP) account. GCP offers a robust and scalable environment perfect for hosting R applications, pipelines, and APIs. By following this tutorial, you’ll set up your account and gain access to $300 in free credits.\nIn addition to the free credits, GCP offers a range of free-tier services that you can use indefinitely under specified limits. You can find a complete list of free-tier services here."
   },
   {
     "objectID": "posts/create-your-gcp-account/index.html#why-choose-google-cloud",
