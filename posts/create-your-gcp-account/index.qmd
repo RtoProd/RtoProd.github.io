@@ -12,7 +12,9 @@ image: 26_all_done.png
 
 Welcome to the first blog post on **RtoProd.com**! Our mission is to provide tips, tricks, and insights to help you transition your R code to production-grade infrastructure. 
 
-Before diving into the technical aspects of deploying R applications, the very first thing we need is an account on a production-grade infrastructure platform. In this post, we'll guide you through creating a **Google Cloud Platform (GCP)** account. GCP offers a robust and scalable environment perfect for hosting R applications, pipelines, and APIs. By following this tutorial, you'll gain access to $300 in free credits and set up your account.
+Before diving into the technical aspects of deploying R applications, the very first thing we need is an account on a production-grade infrastructure platform. In this post, we'll guide you through creating a **Google Cloud Platform (GCP)** account. GCP offers a robust and scalable environment perfect for hosting R applications, pipelines, and APIs. By following this tutorial, you'll set up your account and gain access to [$300 in free credits](https://cloud.google.com/free/docs/free-cloud-features#free-trial){.external target="_blank"}.
+
+In addition to the free credits, GCP offers a range of free-tier services that you can use indefinitely under specified limits. You can find a complete list of [free-tier services here](https://cloud.google.com/free/docs/free-cloud-features#free-tier-usage-limits){.external target="_blank"}.
 
 ---
 
@@ -132,6 +134,6 @@ Let's get started!
 
 ![](25_close_welcome.png){width=350 fig-alt="Click 'Done'." style="border: 1px solid black;"}
 
-27. That's it! Your account is now ready to use, with **free-tier services** enabled, and you've got **$300 in credits** to use within the next 3 months.
+27. That's it! Your account is now ready to use, with **[free-tier services](https://cloud.google.com/free/docs/free-cloud-features#free-tier-usage-limits){.external target="_blank"}** enabled, and you've got **[$300 in credits](https://cloud.google.com/free/docs/free-cloud-features#free-trial){.external target="_blank"}** to use within the next 3 months.
 
 ![](26_all_done.png){width=600 fig-alt="All done!" style="border: 1px solid black;"}
