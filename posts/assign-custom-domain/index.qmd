@@ -1,0 +1,128 @@
+---
+title: "Assign a Custom Domain to a Google Cloud Run Service"
+author: "Juan C. Rodriguez"
+date: "2024-11-20"
+categories: []
+description: "Learn how to assign a custom domain to your Google Cloud Run Service for a professional and branded URL."
+keywords: [Shiny, GCP, Cloud Run, Docker, Free Tier]
+image: 23_all_done.png
+---
+
+## Assign a Custom Domain to a Google Cloud Run Service
+
+In this post, we'll guide you through assigning a custom domain to a Google Cloud Run Service, such as the one we deployed in our [previous post](https://RtoProd.com/posts/deploy-your-shiny-app/){.external target="_blank"}. Using Google Cloud Run's Domain Mappings feature, we'll map your Shiny app to a memorable domain name like "everysinglecountry.com".
+
+### Prerequisites
+
+Before we begin, ensure that:
+
+- Your Shiny app is deployed in one of the [supported regions for Domain Mappings](https://cloud.google.com/run/docs/mapping-custom-domains#limitations){.external target="_blank"}.
+- You have already purchased a domain. For this example, we bought "everysinglecountry.com" at [Porkbun](https://porkbun.com/){.external target="_blank"} for $11.06/year. You can use any registrar as the steps are similar.
+
+Let's get started!
+
+---
+
+### On Google Cloud Platform (GCP)
+
+1. Log in to the [Google Cloud console](https://console.cloud.google.com/){.external target="_blank"} and open the **Navigation menu** (three horizontal lines icon).
+
+![](01_gcp.png){width="350" fig-alt="Click the 'Navigation menu' icon." style="border: 1px solid black;"}
+
+2. Select **"Cloud Run"**.
+
+![](02_gcp_cloud_run.png){width="300" fig-alt="Click 'Cloud Run'." style="border: 1px solid black;"}
+
+3. Click **"MANAGE CUSTOM DOMAINS"**.
+
+![](03_manage_domains.png){width="350" fig-alt="Click 'MANAGE CUSTOM DOMAINS'." style="border: 1px solid black;"}
+
+4. Click **"ADD MAPPING"**.
+
+![](04_add_mapping.png){width="300" fig-alt="Click 'ADD MAPPING'." style="border: 1px solid black;"}
+
+5. Select your service, such as "everysinglecountry".
+
+![](05_select_service.png){width="250" fig-alt="Select the desired service." style="border: 1px solid black;"}
+
+6. Click **"Cloud Run Domain Mappings"**.
+
+![](06_cloud_run_domain_mappings.png){width="350" fig-alt="Click 'Cloud Run Domain Mappings'." style="border: 1px solid black;"}
+
+7. Enter your domain name (e.g., "everysinglecountry.com") and click **"CONTINUE"**.
+
+![](07_verify_domain.png){width="450" fig-alt="Enter your domain to verify." style="border: 1px solid black;"}
+
+8. Click **"VERIFY IN SEARCH CONSOLE"** to validate ownership.
+
+![](08_verify_in_search_console.png){width="250" fig-alt="Click 'VERIFY IN SEARCH CONSOLE'." style="border: 1px solid black;"}
+
+9. Enter the domain name in the "Domain" panel, and click **"CONTINUE"**.
+
+![](09_domain_verify.png){width="400" fig-alt="Enter the domain name, and click 'CONTINUE'." style="border: 1px solid black;"}
+
+10. Ensure the selected record type is **"TXT"**, then copy the TXT record ("google-site-verification=...").
+
+![](10_verify_with_txt.png){width="400" fig-alt="Copy the TXT record." style="border: 1px solid black;"}
+
+### On Your Domain Registrar (Porkbun in This Example)
+
+11. Keep the GCP tab open. Open [Porkbun](https://porkbun.com/account/domainsSpeedy){.external target="_blank"} and click **"DNS"** for your domain (e.g., "everysinglecountry.com").
+
+![](11_porkbun_domains.png){width="350" fig-alt="Click 'DNS' in Porkbun's domain to verify." style="border: 1px solid black;"}
+
+12. Add a **"TXT"** record by pasting the value from Step 10 into the **"Answer"** field, then click **"Add"**.
+
+![](12_porkbun_domain_verification.png){width="500" fig-alt="Paste the 'TXT', and click 'Add'." style="border: 1px solid black;"}
+
+13. Keep the Porkbun tab open. Return to the GCP tab and click **"VERIFY"**.
+
+![](13_verify.png){width="250" fig-alt="Click 'VERIFY' in the GCP panel." style="border: 1px solid black;"}
+
+14. Once ownership is confirmed, you'll see the message **"Ownership verified"**.
+
+![](14_verified.png){width="250" fig-alt="Wait for the 'Ownership verified' message to appear." style="border: 1px solid black;"}
+
+15. Click **"REFRESH"**.
+
+![](15_refresh.png){width="400" fig-alt="Click 'REFRESH'." style="border: 1px solid black;"}
+
+16.Click **"CONTINUE"**.
+
+![](16_domain_verified.png){width="400" fig-alt="Click 'CONTINUE'." style="border: 1px solid black;"}
+
+### Adding DNS Records.
+
+17. In the GCP tab, you'll see the required DNS records listed. Copy each record one by one (starting with the "A" records).
+
+![](17_gcp_dns_records.png){width="500" fig-alt="Copy the first DNS record." style="border: 1px solid black;"}
+
+18. Switch to the Porkbun tab. Before adding the new DNS records, remove any existing **"ALIAS"** and **"CNAME"** records by clicking the trashcan icon to the right of each entry.
+
+![](18_delete_dns_records.png){width="500" fig-alt="Delete the 'ALIAS' and 'CNAME' DNS records." style="border: 1px solid black;"}
+
+19. Add the **"A"** records. For each record, select "A" as the **"Type"**, enter the corresponding IP address into the **"Answer"** field, and click "Add".
+
+![](19_set_dns_records.png){width="500" fig-alt="Copy each of the DNS records in Porkbun." style="border: 1px solid black;"}
+
+20. Next, add the **"AAAA"** records. Follow the same process, selecting "AAAA" as the **"Type"** and pasting the corresponding values from the GCP tab into the **"Answer"** field.
+
+![](20_set_dns_records.png){width="500" fig-alt="Copy each of the DNS records in Porkbun." style="border: 1px solid black;"}
+
+21. In this example, there are a total of 8 DNS records to add. After adding all the DNS records in Porkbun, your configuration should look similar to this:
+
+![](21_set_dns_records.png){width="500" fig-alt="Resulting DNS records in Porkbun." style="border: 1px solid black;"}
+
+22. Go back to the GCP tab and click **"DONE"** to close the DNS records list. Now, you'll need to wait for DNS propagation. This process can take a few minutes to several hours, depending on your domain registrar and internet service provider. In this example, it took one hour, but it can be shorter or longer.
+
+![](22_wait_until_dns_propagates.png){width="350" fig-alt="Wait for DNS propagation." style="border: 1px solid black;"}
+
+23. Once the DNS propagation is complete, you'll see a green checkmark next to your domain in the GCP Domain Mapping panel. This indicates that your custom domain is successfully linked to your Cloud Run service.
+
+![](23_all_done.png){width="400" fig-alt="All done! Your Shiny app is now live on your custom domain." style="border: 1px solid black;"}
+
+---
+
+Congratulations! Your Shiny app is now accessible at its new custom domain, providing a professional and branded experience for your users.
+
+Enjoy your new setup!
