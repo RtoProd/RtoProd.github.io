@@ -6,8 +6,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Juan C. Rodriguez">
+<meta name="dcterms.date" content="2024-11-20">
+<meta name="keywords" content="Shiny, GCP, Cloud Run, Docker, Free Tier">
+<meta name="description" content="Learn how to assign a custom domain to your Google Cloud Run Service for a professional and branded URL.">
 
-<title>Blog – RtoProd.com</title>
+<title>Assign a Custom Domain to a Google Cloud Run Service – RtoProd.com</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +27,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./profile.jpg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../profile.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,35 +71,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-X94N1YEBMV"></script>
 
 <script type="text/javascript">
@@ -108,57 +81,30 @@ gtag('js', new Date());
 gtag('config', 'G-X94N1YEBMV', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Blog – RtoProd.com">
-<meta property="og:image" content="https://RtoProd.com/posts/deploy-your-shiny-app/thumbnail.png">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Assign a Custom Domain to a Google Cloud Run Service – RtoProd.com">
+<meta property="og:description" content="Learn how to assign a custom domain to your Google Cloud Run Service for a professional and branded URL.">
+<meta property="og:image" content="https://RtoProd.com/posts/assign-custom-domain/23_all_done.png">
 <meta property="og:site_name" content="RtoProd.com">
-<meta property="og:image:height" content="1178">
-<meta property="og:image:width" content="1956">
-<meta name="twitter:title" content="Blog – RtoProd.com">
-<meta name="twitter:image" content="https://RtoProd.com/posts/deploy-your-shiny-app/thumbnail.png">
-<meta name="twitter:image-height" content="1178">
-<meta name="twitter:image-width" content="1956">
+<meta property="og:image:height" content="648">
+<meta property="og:image:width" content="758">
+<meta name="twitter:title" content="Assign a Custom Domain to a Google Cloud Run Service – RtoProd.com">
+<meta name="twitter:description" content="Learn how to assign a custom domain to your Google Cloud Run Service for a professional and branded URL.">
+<meta name="twitter:image" content="https://RtoProd.com/posts/assign-custom-domain/23_all_done.png">
+<meta name="twitter:image-height" content="648">
+<meta name="twitter:image-width" content="758">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">RtoProd.com</span>
     </a>
   </div>
@@ -169,7 +115,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -192,150 +138,175 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Blog</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Assign a Custom Domain to a Google Cloud Run Service</h1>
+                  <div>
+        <div class="description">
+          Learn how to assign a custom domain to your Google Cloud Run Service for a professional and branded URL.
+        </div>
+      </div>
+                </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Juan C. Rodriguez </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 20, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
+
+  <div>
+    <div class="keywords">
+      <div class="block-title">Keywords</div>
+      <p>Shiny, GCP, Cloud Run, Docker, Free Tier</p>
+    </div>
+  </div>
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Free-Tier">Free-Tier <span class="quarto-category-count">(2)</span></div><div class="category" data-category="GCP">GCP <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Shiny">Shiny <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<section id="assign-a-custom-domain-to-a-google-cloud-run-service" class="level2">
+<h2 class="anchored" data-anchor-id="assign-a-custom-domain-to-a-google-cloud-run-service">Assign a Custom Domain to a Google Cloud Run Service</h2>
+<p>In this post, we’ll guide you through assigning a custom domain to a Google Cloud Run Service, such as the one we deployed in our <a href="https://RtoProd.com/posts/deploy-your-shiny-app/" class="external" target="_blank">previous post</a>. Using Google Cloud Run’s Domain Mappings feature, we’ll map your Shiny app to a memorable domain name like “everysinglecountry.com”.</p>
+<section id="prerequisites" class="level3">
+<h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
+<p>Before we begin, ensure that:</p>
+<ul>
+<li>Your Shiny app is deployed in one of the <a href="https://cloud.google.com/run/docs/mapping-custom-domains#limitations" class="external" target="_blank">supported regions for Domain Mappings</a>.</li>
+<li>You have already purchased a domain. For this example, we bought “everysinglecountry.com” at <a href="https://porkbun.com/" class="external" target="_blank">Porkbun</a> for $11.06/year. You can use any registrar as the steps are similar.</li>
+</ul>
+<p>Let’s get started!</p>
+<hr>
+</section>
+<section id="on-google-cloud-platform-gcp" class="level3">
+<h3 class="anchored" data-anchor-id="on-google-cloud-platform-gcp">On Google Cloud Platform (GCP)</h3>
+<ol type="1">
+<li>Log in to the <a href="https://console.cloud.google.com/" class="external" target="_blank">Google Cloud console</a> and open the <strong>Navigation menu</strong> (three horizontal lines icon).</li>
+</ol>
+<p><img src="01_gcp.png" class="img-fluid" style="border: 1px solid black;" alt="Click the 'Navigation menu' icon." width="350"></p>
+<ol start="2" type="1">
+<li>Select <strong>“Cloud Run”</strong>.</li>
+</ol>
+<p><img src="02_gcp_cloud_run.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Cloud Run'." width="300"></p>
+<ol start="3" type="1">
+<li>Click <strong>“MANAGE CUSTOM DOMAINS”</strong>.</li>
+</ol>
+<p><img src="03_manage_domains.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'MANAGE CUSTOM DOMAINS'." width="350"></p>
+<ol start="4" type="1">
+<li>Click <strong>“ADD MAPPING”</strong>.</li>
+</ol>
+<p><img src="04_add_mapping.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'ADD MAPPING'." width="300"></p>
+<ol start="5" type="1">
+<li>Select your service, such as “everysinglecountry”.</li>
+</ol>
+<p><img src="05_select_service.png" class="img-fluid" style="border: 1px solid black;" alt="Select the desired service." width="250"></p>
+<ol start="6" type="1">
+<li>Click <strong>“Cloud Run Domain Mappings”</strong>.</li>
+</ol>
+<p><img src="06_cloud_run_domain_mappings.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Cloud Run Domain Mappings'." width="350"></p>
+<ol start="7" type="1">
+<li>Enter your domain name (e.g., “everysinglecountry.com”) and click <strong>“CONTINUE”</strong>.</li>
+</ol>
+<p><img src="07_verify_domain.png" class="img-fluid" style="border: 1px solid black;" alt="Enter your domain to verify." width="450"></p>
+<ol start="8" type="1">
+<li>Click <strong>“VERIFY IN SEARCH CONSOLE”</strong> to validate ownership.</li>
+</ol>
+<p><img src="08_verify_in_search_console.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'VERIFY IN SEARCH CONSOLE'." width="250"></p>
+<ol start="9" type="1">
+<li>Enter the domain name in the “Domain” panel, and click <strong>“CONTINUE”</strong>.</li>
+</ol>
+<p><img src="09_domain_verify.png" class="img-fluid" style="border: 1px solid black;" alt="Enter the domain name, and click 'CONTINUE'." width="400"></p>
+<ol start="10" type="1">
+<li>Ensure the selected record type is <strong>“TXT”</strong>, then copy the TXT record (“google-site-verification=…”).</li>
+</ol>
+<p><img src="10_verify_with_txt.png" class="img-fluid" style="border: 1px solid black;" alt="Copy the TXT record." width="400"></p>
+</section>
+<section id="on-your-domain-registrar-porkbun-in-this-example" class="level3">
+<h3 class="anchored" data-anchor-id="on-your-domain-registrar-porkbun-in-this-example">On Your Domain Registrar (Porkbun in This Example)</h3>
+<ol start="11" type="1">
+<li>Keep the GCP tab open. Open <a href="https://porkbun.com/account/domainsSpeedy" class="external" target="_blank">Porkbun</a> and click <strong>“DNS”</strong> for your domain (e.g., “everysinglecountry.com”).</li>
+</ol>
+<p><img src="11_porkbun_domains.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'DNS' in Porkbun's domain to verify." width="350"></p>
+<ol start="12" type="1">
+<li>Add a <strong>“TXT”</strong> record by pasting the value from Step 10 into the <strong>“Answer”</strong> field, then click <strong>“Add”</strong>.</li>
+</ol>
+<p><img src="12_porkbun_domain_verification.png" class="img-fluid" style="border: 1px solid black;" alt="Paste the 'TXT', and click 'Add'." width="500"></p>
+<ol start="13" type="1">
+<li>Keep the Porkbun tab open. Return to the GCP tab and click <strong>“VERIFY”</strong>.</li>
+</ol>
+<p><img src="13_verify.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'VERIFY' in the GCP panel." width="250"></p>
+<ol start="14" type="1">
+<li>Once ownership is confirmed, you’ll see the message <strong>“Ownership verified”</strong>.</li>
+</ol>
+<p><img src="14_verified.png" class="img-fluid" style="border: 1px solid black;" alt="Wait for the 'Ownership verified' message to appear." width="250"></p>
+<ol start="15" type="1">
+<li>Click <strong>“REFRESH”</strong>.</li>
+</ol>
+<p><img src="15_refresh.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'REFRESH'." width="400"></p>
+<p>16.Click <strong>“CONTINUE”</strong>.</p>
+<p><img src="16_domain_verified.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'CONTINUE'." width="400"></p>
+</section>
+<section id="adding-dns-records." class="level3">
+<h3 class="anchored" data-anchor-id="adding-dns-records.">Adding DNS Records.</h3>
+<ol start="17" type="1">
+<li>In the GCP tab, you’ll see the required DNS records listed. Copy each record one by one (starting with the “A” records).</li>
+</ol>
+<p><img src="17_gcp_dns_records.png" class="img-fluid" style="border: 1px solid black;" alt="Copy the first DNS record." width="500"></p>
+<ol start="18" type="1">
+<li>Switch to the Porkbun tab. Before adding the new DNS records, remove any existing <strong>“ALIAS”</strong> and <strong>“CNAME”</strong> records by clicking the trashcan icon to the right of each entry.</li>
+</ol>
+<p><img src="18_delete_dns_records.png" class="img-fluid" style="border: 1px solid black;" alt="Delete the 'ALIAS' and 'CNAME' DNS records." width="500"></p>
+<ol start="19" type="1">
+<li>Add the <strong>“A”</strong> records. For each record, select “A” as the <strong>“Type”</strong>, enter the corresponding IP address into the <strong>“Answer”</strong> field, and click “Add”.</li>
+</ol>
+<p><img src="19_set_dns_records.png" class="img-fluid" style="border: 1px solid black;" alt="Copy each of the DNS records in Porkbun." width="500"></p>
+<ol start="20" type="1">
+<li>Next, add the <strong>“AAAA”</strong> records. Follow the same process, selecting “AAAA” as the <strong>“Type”</strong> and pasting the corresponding values from the GCP tab into the <strong>“Answer”</strong> field.</li>
+</ol>
+<p><img src="20_set_dns_records.png" class="img-fluid" style="border: 1px solid black;" alt="Copy each of the DNS records in Porkbun." width="500"></p>
+<ol start="21" type="1">
+<li>In this example, there are a total of 8 DNS records to add. After adding all the DNS records in Porkbun, your configuration should look similar to this:</li>
+</ol>
+<p><img src="21_set_dns_records.png" class="img-fluid" style="border: 1px solid black;" alt="Resulting DNS records in Porkbun." width="500"></p>
+<ol start="22" type="1">
+<li>Go back to the GCP tab and click <strong>“DONE”</strong> to close the DNS records list. Now, you’ll need to wait for DNS propagation. This process can take a few minutes to several hours, depending on your domain registrar and internet service provider. In this example, it took one hour, but it can be shorter or longer.</li>
+</ol>
+<p><img src="22_wait_until_dns_propagates.png" class="img-fluid" style="border: 1px solid black;" alt="Wait for DNS propagation." width="350"></p>
+<ol start="23" type="1">
+<li>Once the DNS propagation is complete, you’ll see a green checkmark next to your domain in the GCP Domain Mapping panel. This indicates that your custom domain is successfully linked to your Cloud Run service.</li>
+</ol>
+<p><img src="23_all_done.png" class="img-fluid" style="border: 1px solid black;" alt="All done! Your Shiny app is now live on your custom domain." width="400"></p>
+<hr>
+<p>Congratulations! Your Shiny app is now accessible at its new custom domain, providing a professional and branded experience for your users.</p>
+<p>Enjoy your new setup!</p>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="" data-listing-date-sort="1732071600000" data-listing-file-modified-sort="1732051169464" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="712">
-<div class="thumbnail">
-<p><a href="./posts/assign-custom-domain/index.html" class="no-external"></a></p><a href="./posts/assign-custom-domain/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/assign-custom-domain/23_all_done.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/assign-custom-domain/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/assign-custom-domain/index.html" class="no-external">Assign a Custom Domain to a Google Cloud Run Service</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/assign-custom-domain/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-
-</div>
-<div class="listing-description">
-<a href="./posts/assign-custom-domain/index.html" class="no-external">Learn how to assign a custom domain to your Google Cloud Run Service for a professional and branded URL.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/assign-custom-domain/index.html" class="no-external">
-<div class="listing-date">
-Nov 20, 2024
-</div>
-<div class="listing-author">
-Juan C. Rodriguez
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Shiny,GCP,Free-Tier" data-listing-date-sort="1731898800000" data-listing-file-modified-sort="1731955055508" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="518">
-<div class="thumbnail">
-<p><a href="./posts/deploy-your-shiny-app/index.html" class="no-external"></a></p><a href="./posts/deploy-your-shiny-app/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/deploy-your-shiny-app/thumbnail.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/deploy-your-shiny-app/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/deploy-your-shiny-app/index.html" class="no-external">Deploy Your Shiny App on Google Cloud Platform</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/deploy-your-shiny-app/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Shiny'); return false;">
-Shiny
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('GCP'); return false;">
-GCP
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Free-Tier'); return false;">
-Free-Tier
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/deploy-your-shiny-app/index.html" class="no-external">A step-by-step guide to deploying a Shiny app on Google Cloud Platform using Artifact Registry and Cloud Run.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/deploy-your-shiny-app/index.html" class="no-external">
-<div class="listing-date">
-Nov 18, 2024
-</div>
-<div class="listing-author">
-Juan C. Rodriguez
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="GCP,Free-Tier" data-listing-date-sort="1731466800000" data-listing-file-modified-sort="1731947533929" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="932">
-<div class="thumbnail">
-<p><a href="./posts/create-your-gcp-account/index.html" class="no-external"></a></p><a href="./posts/create-your-gcp-account/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/create-your-gcp-account/26_all_done.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/create-your-gcp-account/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/create-your-gcp-account/index.html" class="no-external">Create Your Google Cloud Account</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/create-your-gcp-account/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('GCP'); return false;">
-GCP
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Free-Tier'); return false;">
-Free-Tier
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/create-your-gcp-account/index.html" class="no-external">Learn how to set up your Google Cloud Platform account to deploy R code to production. Get $300 in free credits with this step-by-step guide.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/create-your-gcp-account/index.html" class="no-external">
-<div class="listing-date">
-Nov 13, 2024
-</div>
-<div class="listing-author">
-Juan C. Rodriguez
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

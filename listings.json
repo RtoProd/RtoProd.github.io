@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/assign-custom-domain/index.html",
       "/posts/deploy-your-shiny-app/index.html",
       "/posts/create-your-gcp-account/index.html"
     ]
