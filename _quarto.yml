@@ -11,6 +11,9 @@ website:
     tracking-id: "G-X94N1YEBMV"
   twitter-card: true
   open-graph: true
+  comments:
+    giscus:
+      repo: RtoProd/RtoProd.github.io
   navbar:
     right:
       - about.qmd
