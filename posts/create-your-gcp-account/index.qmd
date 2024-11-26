@@ -2,7 +2,7 @@
 title: "Create Your Google Cloud Account"
 author: "Juan C. Rodriguez"
 date: "2024-11-13"
-categories: [GCP, Free-Tier]
+categories: [GCP, Free-Tier, Accounts]
 description: "Learn how to set up your Google Cloud Platform account to deploy R code to production. Get $300 in free credits with this step-by-step guide."
 keywords: [Google Cloud Platform, R to production, GCP setup, R deployment, cloud free tier]
 image: 26_all_done.png

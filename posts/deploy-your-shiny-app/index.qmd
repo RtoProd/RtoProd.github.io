@@ -2,9 +2,9 @@
 title: "Deploy Your Shiny App on Google Cloud Platform"
 author: "Juan C. Rodriguez"
 date: "2024-11-18"
-categories: [Shiny, GCP, Free-Tier]
+categories: [Shiny, GCP, Free-Tier, Deployment]
 description: "A step-by-step guide to deploying a Shiny app on Google Cloud Platform using Artifact Registry and Cloud Run."
-keywords: [Shiny, GCP, Cloud Run, Docker, Free Tier]
+keywords: [Shiny, GCP, Cloud Run, Docker, Free Tier, Deploy]
 image: thumbnail.png
 ---
 

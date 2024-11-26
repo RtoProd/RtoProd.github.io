@@ -2,9 +2,9 @@
 title: "Assign a Custom Domain to a Google Cloud Run Service"
 author: "Juan C. Rodriguez"
 date: "2024-11-20"
-categories: []
+categories: [Domain Names, GCP, Free-Tier]
 description: "Learn how to assign a custom domain to your Google Cloud Run Service for a professional and branded URL."
-keywords: [Shiny, GCP, Cloud Run, Docker, Free Tier]
+keywords: [Shiny, GCP, Cloud Run, Docker, Free Tier, Domain Names]
 image: 23_all_done.png
 ---
 
