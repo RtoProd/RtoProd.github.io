@@ -3,8 +3,8 @@ title: "Enable Google Cloud Platform Managed User Auth"
 author: "Juan C. Rodriguez"
 date: "2024-11-26"
 categories: [Auth, GCP, Free-Tier]
-description: ""
-keywords: []
+description: "Learn how to set up and configure Google Cloud Platform's Identity Provider for your R projects. This guide covers secure user authentication using the Email/Password provider and offers practical examples for integration in R and Shiny apps."
+keywords: [Google Cloud Platform, GCP, Identity Provider, Authentication, R, Shiny, Free Tier, Email/Password Auth, Firebase API]
 image: thumbnail.png
 ---
 

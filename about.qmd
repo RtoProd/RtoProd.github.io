@@ -14,7 +14,6 @@ about:
     - icon: github
       text: Github
       href: https://github.com/RtoProd/
-
 ---
 
 At **RtoProd.com**, we bridge the gap between **R development and full-scale production**. We understand that taking R code from development to production-ready can be challenging - but possible. Our platform is dedicated to simplifying and accelerating this process by sharing **proven insights, tools, and techniques** to streamline deployment on modern infrastructure.
@@ -24,3 +23,5 @@ Our team is composed of experts with diverse technical backgrounds, bringing tog
 Through our blog posts, tutorials, and resources, **we aim to empower teams to harness the full potential of R in production** settings. Whether you're building an end-to-end data pipeline, deploying a machine learning model, or creating an interactive web app, **RtoProd.com** is here to guide you in making your code work seamlessly at scale.
 
 **Join us** as we explore best practices, cloud-native technologies, and the latest advancements in R deployment to help you confidently transition your R code from prototype to production.
+
+**Wanna talk? Write to us at** [hello@RtoProd.com](mailto:hello@RtoProd.com)

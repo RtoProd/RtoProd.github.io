@@ -1,0 +1,108 @@
+---
+title: "Enable Google Analytics for Your Shiny App"
+author: "Juan C. Rodriguez"
+date: "2024-12-02"
+categories: [Analytics, Free-Tier]
+description: "Learn how to set up and configure Google Analytics for your Shiny apps to track user interactions and improve your app's performance."
+keywords: [Shiny, Google Analytics, Web Analytics, R]
+image: thumbnail.png
+---
+
+## Why Add Google Analytics to Your Shiny App?
+
+Understanding how users interact with your Shiny app is key to improving its performance and user experience. Google Analytics provides powerful tools to track app usage, identify popular features, and gain actionable insights. Best of all, it's free to get started.
+
+In this guide, we'll walk you through the process of integrating Google Analytics with your Shiny app, step by step.
+
+---
+
+### Step 1: Create a Google Analytics Account
+
+1. Visit [Google Analytics](https://analytics.google.com/){.external target="_blank"}, and click **"Start measuring"**.
+
+![](01_google_analytics.png){width="600" fig-alt="Click 'Start measuring'." style="border: 1px solid black;"}
+
+2. Fill in your **"Account details"**, agree to the terms, and click **"Next"**.
+
+![](02_create_account.png){width="350" fig-alt="Fill the account details and click 'Next'." style="border: 1px solid black;"}
+
+### Step 2: Set Up Your Property
+
+3. Enter your **"Property details"**, such as your app name and time zone, then click **"Next"**.
+
+![](03_create_property.png){width="350" fig-alt="Fill the property details and click 'Next'." style="border: 1px solid black;"}
+
+4. Provide your **"Business details"**, and click **"Next"**.
+
+![](04_business_details.png){width="300" fig-alt="Fill the business details and click 'Next'." style="border: 1px solid black;"}
+
+5. Select your business objectives (e.g., measure user engagement), and click **"Create"**.
+
+![](05_select_objectives.png){width="400" fig-alt="Select objectives and click 'Create'." style="border: 1px solid black;"}
+
+6. Accept the terms of service to proceed, and click **"I Accept"**.
+
+![](06_data_collection.png){width="350" fig-alt="Read the ToS and click 'I Accept'." style="border: 1px solid black;"}
+
+### Step 3: Configure Your Data Stream
+
+7. Select the **"Web"** platform.
+
+![](07_configure_platform.png){width="350" fig-alt="Select 'Web' platform." style="border: 1px solid black;"}
+
+8. Enter the public **"Website URL"** of your Shiny app, give a **"Stream name"**, and click **"Create & continue"**.
+
+![](08_configure_stream.png){width="650" fig-alt="Enter your app's URL and stream name, and click 'Create & continue'." style="border: 1px solid black;"}
+
+9. Copy the Google Analytics ID generated for your app (e.g., `G-ABCD12E34F`).
+
+![](09_copy_ga_id.png){width="650" fig-alt="Copy the Google Analytics ID." style="border: 1px solid black;"}
+
+### Step 4: Add Google Analytics to Your Shiny App
+
+To connect your Shiny app to Google Analytics:
+
+1. Include the Google Analytics `gtag` code in your app's UI. To simplify this, use the pre-written R function from [this gist](https://gist.github.com/jcrodriguez1989/a6a9c4168262e99ef2f9c70a110886ab){.external target="_blank"}. Copy the `use_google_analytics` function definition in your code, or directly `source` the gist:
+
+```r
+source(paste0(
+  "https://gist.githubusercontent.com/jcrodriguez1989/a6a9c4168262e99ef2f9c70a110886ab/raw/",
+  "ea6b48e1cdaaed2839524ad700a930f6d17583d2/ga_setup.R"
+))
+```
+
+2. Update your Shiny app's UI code, it should look smimilar as shown below:
+
+```r
+ui <- fluidPage(
+  use_google_analytics("G-ABCD12E34F"),
+  ...
+```
+
+3. Re-deploy your app to your hosting platform.
+
+### Step 5: Test Your Installation
+
+10. Return to the Google Analytics dashboard and click **"Test installation"**.
+
+![](10_test_installation.png){width="250" fig-alt="Click 'Test installation'." style="border: 1px solid black;"}
+
+11. If everything is set up correctly, you'll see a success message confirming that Google Analytics is tracking your app.
+
+![](11_installation_success.png){width="350" fig-alt="Google Analytics tag success message." style="border: 1px solid black;"}
+
+### Final Step: Monitor Your Data
+
+12. Wait a few hours for data collection to begin. Then, use the Google Analytics dashboard to explore user interactions, track app performance, and gain insights into how users engage with your app.
+
+![](12_just_wait.png){width="650" fig-alt="Wait for data to start appearing." style="border: 1px solid black;"}
+
+![](thumbnail.png){width="400" fig-alt="Google Analytics at work." style="border: 1px solid black;"}
+
+---
+
+## Congratulations!
+
+You've successfully integrated Google Analytics into your Shiny app. With this setup, you can make data-driven decisions to improve your app and deliver a better experience for your users.
+
+Let me know in the comments if you have any questions or need further assistance.
