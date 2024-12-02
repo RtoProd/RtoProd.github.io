@@ -6,8 +6,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Juan C. Rodriguez">
+<meta name="dcterms.date" content="2024-12-02">
+<meta name="keywords" content="Shiny, Google Analytics, Web Analytics, R">
+<meta name="description" content="Learn how to set up and configure Google Analytics for your Shiny apps to track user interactions and improve your app’s performance.">
 
-<title>Blog – RtoProd.com</title>
+<title>Enable Google Analytics for Your Shiny App – RtoProd.com</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,28 +24,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./profile.jpg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../profile.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,35 +105,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-X94N1YEBMV"></script>
 
 <script type="text/javascript">
@@ -108,57 +115,30 @@ gtag('js', new Date());
 gtag('config', 'G-X94N1YEBMV', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Blog – RtoProd.com">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Enable Google Analytics for Your Shiny App – RtoProd.com">
+<meta property="og:description" content="Learn how to set up and configure Google Analytics for your Shiny apps to track user interactions and improve your app’s performance.">
 <meta property="og:image" content="https://RtoProd.com/posts/enable-google-analytics/thumbnail.png">
 <meta property="og:site_name" content="RtoProd.com">
 <meta property="og:image:height" content="760">
 <meta property="og:image:width" content="1086">
-<meta name="twitter:title" content="Blog – RtoProd.com">
+<meta name="twitter:title" content="Enable Google Analytics for Your Shiny App – RtoProd.com">
+<meta name="twitter:description" content="Learn how to set up and configure Google Analytics for your Shiny apps to track user interactions and improve your app’s performance.">
 <meta name="twitter:image" content="https://RtoProd.com/posts/enable-google-analytics/thumbnail.png">
 <meta name="twitter:image-height" content="760">
 <meta name="twitter:image-width" content="1086">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">RtoProd.com</span>
     </a>
   </div>
@@ -169,7 +149,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -192,239 +172,159 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Blog</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Enable Google Analytics for Your Shiny App</h1>
+                  <div>
+        <div class="description">
+          Learn how to set up and configure Google Analytics for your Shiny apps to track user interactions and improve your app’s performance.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Analytics</div>
+                <div class="quarto-category">Free-Tier</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Juan C. Rodriguez </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 2, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
+
+  <div>
+    <div class="keywords">
+      <div class="block-title">Keywords</div>
+      <p>Shiny, Google Analytics, Web Analytics, R</p>
+    </div>
+  </div>
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Accounts">Accounts <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Analytics">Analytics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Auth">Auth <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Deployment">Deployment <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Domain Names">Domain Names <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Free-Tier">Free-Tier <span class="quarto-category-count">(5)</span></div><div class="category" data-category="GCP">GCP <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Shiny">Shiny <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<section id="why-add-google-analytics-to-your-shiny-app" class="level2">
+<h2 class="anchored" data-anchor-id="why-add-google-analytics-to-your-shiny-app">Why Add Google Analytics to Your Shiny App?</h2>
+<p>Understanding how users interact with your Shiny app is key to improving its performance and user experience. Google Analytics provides powerful tools to track app usage, identify popular features, and gain actionable insights. Best of all, it’s free to get started.</p>
+<p>In this guide, we’ll walk you through the process of integrating Google Analytics with your Shiny app, step by step.</p>
+<hr>
+<section id="step-1-create-a-google-analytics-account" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-create-a-google-analytics-account">Step 1: Create a Google Analytics Account</h3>
+<ol type="1">
+<li>Visit <a href="https://analytics.google.com/" class="external" target="_blank">Google Analytics</a>, and click <strong>“Start measuring”</strong>.</li>
+</ol>
+<p><img src="01_google_analytics.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Start measuring'." width="600"></p>
+<ol start="2" type="1">
+<li>Fill in your <strong>“Account details”</strong>, agree to the terms, and click <strong>“Next”</strong>.</li>
+</ol>
+<p><img src="02_create_account.png" class="img-fluid" style="border: 1px solid black;" alt="Fill the account details and click 'Next'." width="350"></p>
+</section>
+<section id="step-2-set-up-your-property" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-set-up-your-property">Step 2: Set Up Your Property</h3>
+<ol start="3" type="1">
+<li>Enter your <strong>“Property details”</strong>, such as your app name and time zone, then click <strong>“Next”</strong>.</li>
+</ol>
+<p><img src="03_create_property.png" class="img-fluid" style="border: 1px solid black;" alt="Fill the property details and click 'Next'." width="350"></p>
+<ol start="4" type="1">
+<li>Provide your <strong>“Business details”</strong>, and click <strong>“Next”</strong>.</li>
+</ol>
+<p><img src="04_business_details.png" class="img-fluid" style="border: 1px solid black;" alt="Fill the business details and click 'Next'." width="300"></p>
+<ol start="5" type="1">
+<li>Select your business objectives (e.g., measure user engagement), and click <strong>“Create”</strong>.</li>
+</ol>
+<p><img src="05_select_objectives.png" class="img-fluid" style="border: 1px solid black;" alt="Select objectives and click 'Create'." width="400"></p>
+<ol start="6" type="1">
+<li>Accept the terms of service to proceed, and click <strong>“I Accept”</strong>.</li>
+</ol>
+<p><img src="06_data_collection.png" class="img-fluid" style="border: 1px solid black;" alt="Read the ToS and click 'I Accept'." width="350"></p>
+</section>
+<section id="step-3-configure-your-data-stream" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-configure-your-data-stream">Step 3: Configure Your Data Stream</h3>
+<ol start="7" type="1">
+<li>Select the <strong>“Web”</strong> platform.</li>
+</ol>
+<p><img src="07_configure_platform.png" class="img-fluid" style="border: 1px solid black;" alt="Select 'Web' platform." width="350"></p>
+<ol start="8" type="1">
+<li>Enter the public <strong>“Website URL”</strong> of your Shiny app, give a <strong>“Stream name”</strong>, and click <strong>“Create &amp; continue”</strong>.</li>
+</ol>
+<p><img src="08_configure_stream.png" class="img-fluid" style="border: 1px solid black;" alt="Enter your app's URL and stream name, and click 'Create &amp; continue'." width="650"></p>
+<ol start="9" type="1">
+<li>Copy the Google Analytics ID generated for your app (e.g., <code>G-ABCD12E34F</code>).</li>
+</ol>
+<p><img src="09_copy_ga_id.png" class="img-fluid" style="border: 1px solid black;" alt="Copy the Google Analytics ID." width="650"></p>
+</section>
+<section id="step-4-add-google-analytics-to-your-shiny-app" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-add-google-analytics-to-your-shiny-app">Step 4: Add Google Analytics to Your Shiny App</h3>
+<p>To connect your Shiny app to Google Analytics:</p>
+<ol type="1">
+<li>Include the Google Analytics <code>gtag</code> code in your app’s UI. To simplify this, use the pre-written R function from <a href="https://gist.github.com/jcrodriguez1989/a6a9c4168262e99ef2f9c70a110886ab" class="external" target="_blank">this gist</a>. Copy the <code>use_google_analytics</code> function definition in your code, or directly <code>source</code> the gist:</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">paste0</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://gist.githubusercontent.com/jcrodriguez1989/a6a9c4168262e99ef2f9c70a110886ab/raw/"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ea6b48e1cdaaed2839524ad700a930f6d17583d2/ga_setup.R"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Update your Shiny app’s UI code, it should look smimilar as shown below:</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">use_google_analytics</span>(<span class="st">"G-ABCD12E34F"</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Re-deploy your app to your hosting platform.</li>
+</ol>
+</section>
+<section id="step-5-test-your-installation" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-test-your-installation">Step 5: Test Your Installation</h3>
+<ol start="10" type="1">
+<li>Return to the Google Analytics dashboard and click <strong>“Test installation”</strong>.</li>
+</ol>
+<p><img src="10_test_installation.png" class="img-fluid" style="border: 1px solid black;" alt="Click 'Test installation'." width="250"></p>
+<ol start="11" type="1">
+<li>If everything is set up correctly, you’ll see a success message confirming that Google Analytics is tracking your app.</li>
+</ol>
+<p><img src="11_installation_success.png" class="img-fluid" style="border: 1px solid black;" alt="Google Analytics tag success message." width="350"></p>
+</section>
+<section id="final-step-monitor-your-data" class="level3">
+<h3 class="anchored" data-anchor-id="final-step-monitor-your-data">Final Step: Monitor Your Data</h3>
+<ol start="12" type="1">
+<li>Wait a few hours for data collection to begin. Then, use the Google Analytics dashboard to explore user interactions, track app performance, and gain insights into how users engage with your app.</li>
+</ol>
+<p><img src="12_just_wait.png" class="img-fluid" style="border: 1px solid black;" alt="Wait for data to start appearing." width="650"></p>
+<p><img src="thumbnail.png" class="img-fluid" style="border: 1px solid black;" alt="Google Analytics at work." width="400"></p>
+<hr>
+</section>
+</section>
+<section id="congratulations" class="level2">
+<h2 class="anchored" data-anchor-id="congratulations">Congratulations!</h2>
+<p>You’ve successfully integrated Google Analytics into your Shiny app. With this setup, you can make data-driven decisions to improve your app and deliver a better experience for your users.</p>
+<p>Let me know in the comments if you have any questions or need further assistance.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Analytics,Free-Tier" data-listing-date-sort="1733108400000" data-listing-file-modified-sort="1733153095354" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="497">
-<div class="thumbnail">
-<p><a href="./posts/enable-google-analytics/index.html" class="no-external"></a></p><a href="./posts/enable-google-analytics/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/enable-google-analytics/thumbnail.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/enable-google-analytics/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/enable-google-analytics/index.html" class="no-external">Enable Google Analytics for Your Shiny App</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/enable-google-analytics/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Analytics'); return false;">
-Analytics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Free-Tier'); return false;">
-Free-Tier
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/enable-google-analytics/index.html" class="no-external">Learn how to set up and configure Google Analytics for your Shiny apps to track user interactions and improve your app’s performance.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/enable-google-analytics/index.html" class="no-external">
-<div class="listing-date">
-Dec 2, 2024
-</div>
-<div class="listing-author">
-Juan C. Rodriguez
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Auth,GCP,Free-Tier" data-listing-date-sort="1732590000000" data-listing-file-modified-sort="1733149076170" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1614">
-<div class="thumbnail">
-<p><a href="./posts/add-user-auth/index.html" class="no-external"></a></p><a href="./posts/add-user-auth/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/add-user-auth/thumbnail.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/add-user-auth/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/add-user-auth/index.html" class="no-external">Enable Google Cloud Platform Managed User Auth</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/add-user-auth/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Auth'); return false;">
-Auth
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('GCP'); return false;">
-GCP
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Free-Tier'); return false;">
-Free-Tier
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/add-user-auth/index.html" class="no-external">Learn how to set up and configure Google Cloud Platform’s Identity Provider for your R projects. This guide covers secure user authentication using the Email/Password provider and offers practical examples for integration in R and Shiny apps.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/add-user-auth/index.html" class="no-external">
-<div class="listing-date">
-Nov 26, 2024
-</div>
-<div class="listing-author">
-Juan C. Rodriguez
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="Domain Names,GCP,Free-Tier" data-listing-date-sort="1732071600000" data-listing-file-modified-sort="1732623853710" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="712">
-<div class="thumbnail">
-<p><a href="./posts/assign-custom-domain/index.html" class="no-external"></a></p><a href="./posts/assign-custom-domain/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/assign-custom-domain/23_all_done.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/assign-custom-domain/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/assign-custom-domain/index.html" class="no-external">Assign a Custom Domain to a Google Cloud Run Service</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/assign-custom-domain/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Domain Names'); return false;">
-Domain Names
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('GCP'); return false;">
-GCP
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Free-Tier'); return false;">
-Free-Tier
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/assign-custom-domain/index.html" class="no-external">Learn how to assign a custom domain to your Google Cloud Run Service for a professional and branded URL.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/assign-custom-domain/index.html" class="no-external">
-<div class="listing-date">
-Nov 20, 2024
-</div>
-<div class="listing-author">
-Juan C. Rodriguez
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="Shiny,GCP,Free-Tier,Deployment" data-listing-date-sort="1731898800000" data-listing-file-modified-sort="1732627445165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="518">
-<div class="thumbnail">
-<p><a href="./posts/deploy-your-shiny-app/index.html" class="no-external"></a></p><a href="./posts/deploy-your-shiny-app/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/deploy-your-shiny-app/thumbnail.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/deploy-your-shiny-app/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/deploy-your-shiny-app/index.html" class="no-external">Deploy Your Shiny App on Google Cloud Platform</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/deploy-your-shiny-app/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Shiny'); return false;">
-Shiny
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('GCP'); return false;">
-GCP
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Free-Tier'); return false;">
-Free-Tier
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Deployment'); return false;">
-Deployment
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/deploy-your-shiny-app/index.html" class="no-external">A step-by-step guide to deploying a Shiny app on Google Cloud Platform using Artifact Registry and Cloud Run.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/deploy-your-shiny-app/index.html" class="no-external">
-<div class="listing-date">
-Nov 18, 2024
-</div>
-<div class="listing-author">
-Juan C. Rodriguez
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="GCP,Free-Tier,Accounts" data-listing-date-sort="1731466800000" data-listing-file-modified-sort="1732623734005" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="932">
-<div class="thumbnail">
-<p><a href="./posts/create-your-gcp-account/index.html" class="no-external"></a></p><a href="./posts/create-your-gcp-account/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/create-your-gcp-account/26_all_done.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/create-your-gcp-account/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/create-your-gcp-account/index.html" class="no-external">Create Your Google Cloud Account</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/create-your-gcp-account/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('GCP'); return false;">
-GCP
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Free-Tier'); return false;">
-Free-Tier
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Accounts'); return false;">
-Accounts
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/create-your-gcp-account/index.html" class="no-external">Learn how to set up your Google Cloud Platform account to deploy R code to production. Get $300 in free credits with this step-by-step guide.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/create-your-gcp-account/index.html" class="no-external">
-<div class="listing-date">
-Nov 13, 2024
-</div>
-<div class="listing-author">
-Juan C. Rodriguez
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -845,6 +745,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://giscus.app/client.js" data-repo="RtoProd/RtoProd.github.io" data-repo-id="R_kgDONHF92g" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
 </div> <!-- /content -->
 
 

@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/enable-google-analytics/index.html",
       "/posts/add-user-auth/index.html",
       "/posts/assign-custom-domain/index.html",
       "/posts/deploy-your-shiny-app/index.html",
