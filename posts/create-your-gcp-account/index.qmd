@@ -144,6 +144,10 @@ Let's get started!
 
 While it's perfectly fine to start with the default "My First Project" assigned by Google Cloud, creating a dedicated project for each of your R deployments helps you organize resources more effectively. It's a simple process and a great habit to adopt.
 
+::: {.panel-tabset}
+
+## Visual
+
 1. Click on **"My First Project"**.
 
 ![](27_my_first_project.png){width=250 fig-alt="Click 'My First Project'." style="border: 1px solid black;"}
@@ -159,3 +163,38 @@ While it's perfectly fine to start with the default "My First Project" assigned 
 4. Wait a few moments for the new project to be created. Once the green checkmark appears, click **"SELECT PROJECT"** to start using your new project.
 
 ![](30_select_project.png){width=400 fig-alt="Click 'SELECT PROJECT' to use your new project." style="border: 1px solid black;"}
+
+## Command Line
+
+```bash
+# Authenticate gcloud with your created account.
+$ gcloud auth login # This will open your browser. Log in with your GCP account credentials.
+You are now logged in as [everysinglecountryproject@gmail.com].
+
+# Create a new Google Cloud project.
+$ gcloud projects create everysinglecountry --name="Every Single Country"
+Create in progress for [https://cloudresourcemanager.googleapis.com/v1/projects/everysinglecountry].
+Waiting for [operations/cp.5754965963896291291] to finish...done.
+Enabling service [cloudapis.googleapis.com] on project [everysinglecountry]...
+Operation "operations/acat.p2-974569654945-863216b7-3654-42da-b2d5-f3eb61c369aa" finished successfully.
+
+# Set the new project as the default project for gcloud.
+$ gcloud config set project everysinglecountry
+Updated property [core/project].
+
+# Set a billing account for this project.
+# List the billing accounts information.
+$ gcloud billing accounts list
+
+ACCOUNT_ID            NAME                OPEN  MASTER_ACCOUNT_ID
+012345-678901-234567  My Billing Account  True
+
+# Set the billing account.
+$ gcloud billing projects link everysinglecountry --billing-account=012345-678901-234567
+billingAccountName: billingAccounts/012345-678901-234567
+billingEnabled: true
+name: projects/everysinglecountry/billingInfo
+projectId: everysinglecountry
+```
+
+:::

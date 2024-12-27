@@ -1,0 +1,326 @@
+---
+title: "Enable Cloud SQL Database"
+author: "Juan C. Rodriguez"
+date: "2024-12-26"
+categories: [GCP, Free-Trial, Database]
+description: "Step-by-step guide to enable and configure a Cloud SQL database in GCP."
+keywords: [Cloud SQL, Google Cloud Platform, R, Databases]
+image: 16_create_database.png
+---
+
+## Enable Cloud SQL Database
+
+This guide outlines the steps to enable and configure a Cloud SQL instance in Google Cloud Platform (GCP). We will create a PostgreSQL database, configure access, and connect using R.
+
+Note: The database we are creating will not be publicly accessible for security reasons. It can only be accessed through the Google Cloud environment or via secure connections like the Cloud SQL Proxy.
+
+### Prerequisites
+
+Before starting, ensure you have:
+
+* [An active GCP account](https://rtoprod.com/posts/create-your-gcp-account/){.external target="_blank"}.
+* [The `gcloud` command-line interface installed and configured](https://cloud.google.com/sdk/docs/install){.external target="_blank"}.
+
+Let's get started!
+
+---
+
+::: {.panel-tabset}
+
+## Visual
+
+1. Log in to the [Google Cloud console](https://console.cloud.google.com/){.external target="_blank"} and open the **Navigation menu** (three horizontal lines icon).
+
+![](01_gcp.png){width=350 fig-alt="Click the 'Navigation menu' icon." style="border: 1px solid black;"}
+
+2. Select **"SQL"**.
+
+![](02_click_sql.png){width=300 fig-alt="Click 'SQL'." style="border: 1px solid black;"}
+
+3. Click **"CREATE INSTANCE WITH YOUR FREE CREDITS"**.
+
+![](03_create_sql_instance.png){width=450 fig-alt="Click 'CREATE INSTANCE WITH YOUR FREE CREDITS'." style="border: 1px solid black;"}
+
+4. Click **"Choose PostgreSQL"**, unless you prefer another database engine.
+
+![](04_choose_db.png){width=450 fig-alt="Click 'Choose PostgreSQL'." style="border: 1px solid black;"}
+
+5. Click **"ENABLE API"**.
+
+![](05_enable_api.png){width=200 fig-alt="Click 'ENABLE API'." style="border: 1px solid black;"}
+
+6. Choose your desired SQL edition. As we are working on a simple project, we select **"Enterprise"** in this example.
+
+![](06_select_plan.png){width=450 fig-alt="Select the 'Enterprise' edition." style="border: 1px solid black;"}
+
+7. Choose your desired SQL Virtual Machine (VM). For this example we are going to select the smallest edition preset, the Sandbox VM (2 vCPU, 8 GB RAM, 10 GB Storage, and single zone). These settings can be changed later.
+
+![](07_select_vm.png){width=450 fig-alt="Select the 'Sandbox' edition preset." style="border: 1px solid black;"}
+
+8. Specify the **"Database version"** (PostgreSQL 16 in this example), fill in an **"Instance ID"**, and set an admin **"Password"** for the "postgres" user.
+
+![](08_set_instance.png){width=450 fig-alt="Fill in the 'Instance info'." style="border: 1px solid black;"}
+
+9. Select the instance **"Region"** and **"Zonal availability"**. For this example, "us-central1" (as is the same as we used in the previous posts), and "Single zone" as this app is a small project (not widely used yet, we can change this in the future).
+
+![](09_choose_region.png){width=450 fig-alt="Choose the instance 'Region' and 'Zonal availability'." style="border: 1px solid black;"}
+
+10. Review the instance settings summary.
+
+![](10_check_db_summary.png){width=400 fig-alt="Review the instance summary." style="border: 1px solid black;"}
+
+11. Take a look at the **"Pricing estimate"**.
+
+![](11_check_pricing_estimates.png){width=400 fig-alt="Check the 'Pricing estimate'." style="border: 1px solid black;"}
+
+12. Click **"CREATE INSTANCE"**.
+
+![](12_create_instance.png){width=200 fig-alt="Click 'CREATE INSTANCE'." style="border: 1px solid black;"}
+
+13. Wait for the instance creation to complete.
+
+![](13_creating.png){width=450 fig-alt="Wait for instance creation." style="border: 1px solid black;"}
+
+14. Once the green checkmark appears, your instance is ready.
+
+![](14_created.png){width=450 fig-alt="Wait for instance creation." style="border: 1px solid black;"}
+
+15. Now, let's create our first database in the newly created instance. Click **"Databases"**.
+
+![](15_create_database.png){width=200 fig-alt="Click 'Databases'." style="border: 1px solid black;"}
+
+16. Click **"CREATE DATABASE"**.
+
+![](16_create_database.png){width=400 fig-alt="Click 'CREATE DATABASE'." style="border: 1px solid black;"}
+
+17. Set the **"Database Name"** and click **"CREATE"**.
+
+![](17_set_db_name.png){width=200 fig-alt="Fill in the 'Database Name' and click 'CREATE'." style="border: 1px solid black;"}
+
+18. Verify the new database is listed.
+
+![](18_dbs_list.png){width=450 fig-alt="Check the database creation." style="border: 1px solid black;"}
+
+19. Now, let's create a new user for the database. Click **"Users"**.
+
+![](19_create_user.png){width=200 fig-alt="Click 'Users'." style="border: 1px solid black;"}
+
+20. Click **"ADD USER ACCOUNT"**.
+
+![](20_create_user.png){width=200 fig-alt="Click 'ADD USER ACCOUNT'." style="border: 1px solid black;"}
+
+21. Fill in the new **"User name"** and **"Password"**, and click **"ADD"**.
+
+![](21_configure_new_user.png){width=200 fig-alt="Fill the new user info and click 'ADD'." style="border: 1px solid black;"}
+
+22. Verify the new user was created.
+
+![](22_users_list.png){width=450 fig-alt="Check the user creation." style="border: 1px solid black;"}
+
+23. Now, let's create our first table in the database. Click **"Cloud SQL Studio"**.
+
+![](23_create_tables.png){width=200 fig-alt="Click 'Cloud SQL Studio'." style="border: 1px solid black;"}
+
+24. Login to the database using the **"User"** and **"Password"** you created in step 21.
+
+![](24_login_with_user.png){width=300 fig-alt="Login to the database." style="border: 1px solid black;"}
+
+25. Open an **"Editor"** tab.
+
+![](25_select_sql_editor.png){width=200 fig-alt="Click an 'Editor' tab." style="border: 1px solid black;"}
+
+26. Run SQL commands to create your desired tables.
+
+![](26_run_your_sql_create_tables.png){width=450 fig-alt="Run SQL code to create your tables." style="border: 1px solid black;"}
+
+27. Now, in order to be able to access the database from outside GCP, we will need to get the JSON keys for a GCP Service Account. In GCP's **"Search"** panel, type **"Service Accounts"**, and click on that service. If you don't have a service account to use, create a new one, by clicking on **"CREATE SERVICE ACCOUNT"**.
+
+![](27_create_service_account.png){width=200 fig-alt="Click to enter 'Service Accounts'." style="border: 1px solid black;"}
+
+28. Create the JSON keys for the service account. Click on the **"Actions"** (three dots).
+
+![](28_create_sa_keys.png){width=750 fig-alt="Click the three dots next to the service account." style="border: 1px solid black;"}
+
+29. Click **"Manage keys"**.
+
+![](29_create_sa_keys.png){width=200 fig-alt="Click 'Manage keys'." style="border: 1px solid black;"}
+
+30. Click **"ADD KEY"** and then **"Create new key"**.
+
+![](30_create_sa_keys.png){width=200 fig-alt="Click 'ADD KEY' and then 'Create new key'." style="border: 1px solid black;"}
+
+31. Check **"JSON"** and click **"CREATE"**. After creation, the JSON key will be downloaded by your browser, move this key file to `~/.gcp/`, e.g., `$ mv ~/Downloads/every-single-country-b2e753a1eee3.json ~/.gcp/everysinglecountry-sa-key.json`.
+
+![](31_create_json_keys.png){width=450 fig-alt="Click 'CREATE'." style="border: 1px solid black;"}
+
+32. Now, to be able to access the database locally, we will use the [`cloud-sql-proxy`](https://cloud.google.com/sql/docs/postgres/connect-auth-proxy) command, for that we need to enable the **"Cloud SQL Admin API"**. In GCP's **"Search"** panel, type **"Cloud SQL Admin API"**, and click on that service.
+
+![](32_enable_sql_admin_api.png){width=200 fig-alt="Click to enter 'Cloud SQL Admin API'." style="border: 1px solid black;"}
+
+33. Enable the **"Cloud SQL Admin API"** service by clicking **"ENABLE"**.
+
+![](33_enable_sql_admin_api.png){width=400 fig-alt="Click 'ENABLE'." style="border: 1px solid black;"}
+
+## Command Line
+
+1. List the available projects.
+```bash
+$ gcloud projects list
+PROJECT_ID              NAME                  PROJECT_NUMBER
+every-single-country    Every Single Country  122108936732
+```
+
+2. Set the active project, in case it wasn't already set.
+```bash
+$ gcloud config set project every-single-country
+Updated property [core/project].
+```
+
+3. Enable the Cloud SQL Admin API, to be able to use the [`cloud-sql-proxy`](https://cloud.google.com/sql/docs/postgres/connect-auth-proxy) command.
+```bash
+$ gcloud services enable sqladmin.googleapis.com
+Operation "operations/acat.p2-974569654945-b833df22-17ed-4724-8615-b9c271849917" finished successfully.
+```
+
+4. Create a Cloud SQL instance.
+```bash
+$ gcloud sql instances create everysinglecountry \
+  --database-version=POSTGRES_16 \
+  --tier=db-custom-2-8192 \
+  --region=us-central1 \
+  --storage-size=10GB \
+  --edition=ENTERPRISE \
+  --backup \
+  --enable-point-in-time-recovery
+Creating Cloud SQL instance for POSTGRES_16...done.
+Created [https://sqladmin.googleapis.com/sql/v1beta4/projects/every-single-country/instances/everysinglecountry].
+NAME                DATABASE_VERSION  LOCATION       TIER              PRIMARY_ADDRESS  PRIVATE_ADDRESS  STATUS
+everysinglecountry  POSTGRES_16       us-central1-b  db-custom-2-8192  34.136.96.114    -                RUNNABLE
+```
+
+5. Create a database in the instance.
+```bash
+$ gcloud sql databases create everysinglecountry --instance=everysinglecountry
+Creating Cloud SQL database...done.
+Created database [everysinglecountry].
+instance: everysinglecountry
+name: everysinglecountry
+project: every-single-country
+```
+
+6. Create a new user for the database.
+```bash
+$ gcloud sql users create everysinglecountry \
+  --instance=everysinglecountry \
+  --password=YOUR_DB_PASSWORD
+Creating Cloud SQL user...done.
+Created user [everysinglecountry].
+```
+
+7. Create a service account to be used by `cloud-sql-proxy`.
+```bash
+$ gcloud iam service-accounts create everysinglecountry-sa \
+  --description="EverySingleCountry Service Account" \
+  --display-name="everysinglecountry-sa"
+Created service account [everysinglecountry-sa].
+```
+
+8. Assign needed IAM Policy Bindings to the service account.
+```bash
+$ gcloud projects add-iam-policy-binding every-single-country \
+  --member="serviceAccount:everysinglecountry-sa@every-single-country.iam.gserviceaccount.com" \
+  --role="roles/cloudsql.client"
+Updated IAM policy for project [every-single-country].
+bindings:
+- members:
+  - serviceAccount:everysinglecountry-sa@every-single-country.iam.gserviceaccount.com
+  role: roles/cloudsql.client
+- members:
+  - serviceAccount:firebase-service-account@firebase-sa-management.iam.gserviceaccount.com
+  - serviceAccount:service-974569654945@gcp-sa-firebase.iam.gserviceaccount.com
+  role: roles/firebase.managementServiceAgent
+- members:
+  - serviceAccount:firebase-adminsdk-efpkq@every-single-country.iam.gserviceaccount.com
+  role: roles/firebase.sdkAdminServiceAgent
+- members:
+  - serviceAccount:firebase-adminsdk-efpkq@every-single-country.iam.gserviceaccount.com
+  role: roles/iam.serviceAccountTokenCreator
+- members:
+  - user:everysinglecountryproject@gmail.com
+  role: roles/owner
+etag: BwYo24Y3_jQ=
+version: 1
+```
+
+9. Generate a JSON key for the service account .
+```bash
+$ gcloud iam service-accounts keys create ~/.gcp/everysinglecountry-sa-key.json --iam-account=everysinglecountry-sa@every-single-country.iam.gserviceaccount.com
+created key [6b71b4f4895ead65646249bf76c05093467669bf] of type [json] as [/Users/jcrodriguez/.gcp/everysinglecountry-sa-key.json] for [everysinglecountry-sa@every-single-country.iam.gserviceaccount.com]
+```
+
+:::
+
+## Connect Locally to the Database
+
+The Cloud SQL database we just created is not publicly accessible and can only be reached within the GCP environment. To connect to your database locally, follow these steps:
+
+1. Get the instance's connection name.
+```bash
+# Get the connection name of the Cloud SQL instance.
+$ gcloud sql instances describe everysinglecountry --format="get(connectionName)"
+every-single-country:us-central1:everysinglecountry
+```
+
+2. Setup a tunnel to access locally the database, using a Cloud SQL Proxy.
+```bash
+# Use Cloud SQL Proxy to create a secure connection to the database.
+$ cloud-sql-proxy every-single-country:us-central1:everysinglecountry --credentials-file=/Users/jcrodriguez/.gcp/everysinglecountry-sa-key.json 
+2024/12/26 16:49:19 Authorizing with the credentials file at "/Users/jcrodriguez/.gcp/everysinglecountry-sa-key.json"
+2024/12/26 16:49:21 [every-single-country:us-central1:everysinglecountry] Listening on 127.0.0.1:5432
+2024/12/26 16:49:21 The proxy has started successfully and is ready for new connections!
+```
+
+At this point, the Cloud SQL Proxy is listening on localhost:5432, and you're ready to connect to your database.
+
+3. Connect to the database in R.
+
+Now that the proxy is set up, you can connect to your database locally from R using the `{DBI}` package and the appropriate PostgreSQL driver. Here's an example connection:
+
+```r
+cn <- DBI::dbConnect(
+  drv = RPostgres::Postgres(),
+  dbname = "everysinglecountry",
+  host = "localhost",
+  user = "everysinglecountry",
+  password = "YOUR_DB_PASSWORD",
+  port = 5432
+)
+DBI::dbListTables(cn)
+DBI::dbDisconnect(cn)
+```
+
+## Enable Cloud SQL Access for your Shiny App
+
+If you have deployed your Shiny app on a GCP Cloud Run service, as demonstrated in our blog post [Deploy Your Shiny App on Google Cloud Platform
+](../deploy-your-shiny-app), you need to grant it access to your Cloud SQL database. To do this, add the `--add-cloudsql-instances` flag to your deployment script:
+
+`--add-cloudsql-instances=every-single-country:us-central1:everysinglecountry`
+
+The updated deployment command should look like this:
+
+```bash
+$ gcloud run deploy everysinglecountry \
+  --image gcr.io/every-single-country/everysinglecountry:latest \
+  --platform managed \
+  --region us-central1 \
+  --allow-unauthenticated \
+  --add-cloudsql-instances=every-single-country:us-central1:everysinglecountry
+```
+
+This configuration allows your app to connect "locally" to the database via the Cloud SQL instance. For details on connecting to the database locally, refer to the previous section.
+
+## Conclusion
+
+Enabling and configuring a Cloud SQL database in Google Cloud Platform is a straightforward process that provides a robust and secure environment for your data. By following this guide, you've set up a PostgreSQL instance, created a database, added users, and connected to it locally using the Cloud SQL Proxy. These steps ensure that your database is accessible only through secure methods, enhancing both performance and security.
+
+As you deploy your applications, such as Shiny apps, you can seamlessly integrate them with your Cloud SQL database to manage and analyze data efficiently. GCP's powerful tools and scalability options make it an ideal platform for hosting and managing your databases.
