@@ -21,6 +21,10 @@ Before starting, ensure you have:
 * [An active GCP account](https://rtoprod.com/posts/create-your-gcp-account/){.external target="_blank"}.
 * [The `gcloud` command-line interface installed and configured](https://cloud.google.com/sdk/docs/install){.external target="_blank"}.
 
+### Important Note on Cloud SQL Free Usage
+
+Cloud SQL is not included in the GCP Free-Tier but is available during the Free-Trial period, which provides $300 in credits to explore GCP services. This means you can create and use a Cloud SQL instance during the trial without incurring charges, as long as your usage stays within the credit limit. After the trial period or if credits are exhausted, you will be billed for any usage. Cost estimates are shown during the setup process, providing insight into potential charges based on your selected configuration.
+
 Let's get started!
 
 ---
