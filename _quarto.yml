@@ -2,15 +2,24 @@ project:
   type: website
 
 website:
-  title: "RtoProd.com"
-  description: "Bridging the gap between R development and full-scale production."
+  title: "R to Production"
+  description: "Learn how to turn your R projects into production-ready solutions. Expert guidance on deploying R, Shiny apps, APIs, and pipelines. Learn how to run your R project in production."
   site-url: https://RtoProd.com/
   image: profile.jpg
   favicon: profile.jpg
   google-analytics:
     tracking-id: "G-X94N1YEBMV"
-  twitter-card: true
-  open-graph: true
+  twitter-card:
+    title: "RtoProd.com - Your R Deployment Experts"
+    creator: "@RtoProdCom"
+    site: "@RtoProdCom"
+    description: "Expert tutorials on deploying R projects to production servers, with a focus on scalability, security, and best practices."
+    image: profile.jpg
+  open-graph:
+    title: "RtoProd.com - Your R Deployment Experts"
+    description: "Expert tutorials on deploying R projects to production servers, with a focus on scalability, security, and best practices."
+    image: profile.jpg
+    site-name: "R to Production"
   comments:
     giscus:
       repo: RtoProd/RtoProd.github.io
