@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/sql-in-compute-engine/index.html",
       "/posts/enable-cloud-sql-database/index.html",
       "/posts/enable-google-analytics/index.html",
       "/posts/add-user-auth/index.html",
