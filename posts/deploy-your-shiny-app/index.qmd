@@ -102,6 +102,7 @@ $ gcloud run deploy everysinglecountry \
   --image gcr.io/every-single-country/everysinglecountry:latest \
   --platform managed \
   --region us-central1 \
+  --max-instances 1 \
   --allow-unauthenticated
 ```
 

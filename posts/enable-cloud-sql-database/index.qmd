@@ -318,6 +318,7 @@ $ gcloud run deploy everysinglecountry \
   --platform managed \
   --region us-central1 \
   --allow-unauthenticated \
+  --max-instances 1 \
   --add-cloudsql-instances=every-single-country:us-central1:everysinglecountry
 ```
 
