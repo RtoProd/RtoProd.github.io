@@ -288,7 +288,8 @@ gtag('config', 'G-X94N1YEBMV', { 'anonymize_ip': true});
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--image</span> gcr.io/every-single-country/everysinglecountry:latest <span class="dt">\</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--platform</span> managed <span class="dt">\</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--region</span> us-central1 <span class="dt">\</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--allow-unauthenticated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--max-instances</span> 1 <span class="dt">\</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--allow-unauthenticated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Once the deployment is complete, Cloud Run will provide a “Service URL”. Open the URL in your browser to access your Shiny app, which is now publicly available.</p>
 <p><img src="04_deployed.png" class="img-fluid" style="border: 1px solid black;" alt="Deployed Shiny app on Cloud Run." width="550"></p>
 <p>In our example, you can test the deployed app at <a href="https://everysinglecountry-122108936732.us-central1.run.app/" class="external" target="_blank">https://everysinglecountry-122108936732.us-central1.run.app/</a>.</p>

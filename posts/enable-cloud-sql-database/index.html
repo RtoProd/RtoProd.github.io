@@ -517,7 +517,8 @@ gtag('config', 'G-X94N1YEBMV', { 'anonymize_ip': true});
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--platform</span> managed <span class="dt">\</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--region</span> us-central1 <span class="dt">\</span></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--allow-unauthenticated</span> <span class="dt">\</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--add-cloudsql-instances</span><span class="op">=</span>every-single-country:us-central1:everysinglecountry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--max-instances</span> 1 <span class="dt">\</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--add-cloudsql-instances</span><span class="op">=</span>every-single-country:us-central1:everysinglecountry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This configuration allows your app to connect “locally” to the database via the Cloud SQL instance. For details on connecting to the database locally, refer to the previous section.</p>
 </section>
 <section id="conclusion" class="level2">
